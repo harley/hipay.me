@@ -16,9 +16,20 @@
             <li><%= link_to "About Us", nil %></li>
           </ul>
           <ul style="float:right">
-              <li>
-                <%= link_to "Sign In", "#", :class => "span2" %>
+            <% if user_signed_in? %>
+              <li class="dropdown" data-dropdown="dropdown" style="float:right">
+                <%= link_to current_user.email, "#", :class => "dropdown-toggle" %>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Account settings", edit_user_registration_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                </ul>
               </li>
+            <% else %>
+              <li>
+                <%= link_to "Sign In", new_user_session_path, :class => "span2" %>
+              </li>
+            <% end %>
           </ul>
 
         </div>
