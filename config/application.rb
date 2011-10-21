@@ -52,6 +52,6 @@ module HipayMe
     config.assets.version = '1.0'
 
     # If deplayed to HEROKU:
-    # config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = false
   end
 end
