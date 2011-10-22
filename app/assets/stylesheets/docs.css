@@ -4,57 +4,54 @@
   Bootstrap's documentation styles
   Special styles for presenting Bootstrap's documentation and examples
 */
-
 /* Body and structure
 -------------------------------------------------- */
 body {
   background-color: #fff;
-  position: relative;
-}
-section {
-  padding-top: 60px;
-}
-section > .row {
-  margin-bottom: 10px;
-}
+  position: relative; }
 
+section {
+  padding-top: 60px; }
+
+section > .row {
+  margin-bottom: 10px; }
 
 /* Jumbotrons
 -------------------------------------------------- */
 .jumbotron {
   min-width: 940px;
-  padding-top: 40px;
-}
+  padding-top: 40px; }
+
 .jumbotron .inner {
   background: transparent url(grid-18px.png) top center;
   padding: 45px 0;
-  -webkit-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-     -moz-box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-/*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
-*/}
+  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+  /*          box-shadow: inset 0 10px 30px rgba(0,0,0,.3);
+  */ }
+
 .jumbotron h1,
 .jumbotron p {
   margin-bottom: 9px;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-}
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); }
+
 .jumbotron h1 {
   font-size: 54px;
   line-height: 1;
-  text-shadow: 0 1px 2px rgba(0,0,0,.5);
-}
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+
 .jumbotron p {
-  font-weight: 300;
-}
+  font-weight: 300; }
+
 .jumbotron .lead {
   font-size: 20px;
-  line-height: 27px;
-}
+  line-height: 27px; }
+
 .jumbotron p a {
   color: #fff;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 /* Specific jumbotrons
 ------------------------- */
@@ -62,13 +59,14 @@ section > .row {
 .masthead {
   background-color: #049cd9;
   background-repeat: no-repeat;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
-  background-image: -webkit-linear-gradient(#004D9F, #049cd9);
-  background-image: -moz-linear-gradient(#004D9F, #049cd9);
-  background-image: -o-linear-gradient(top, #004D9F, #049cd9);
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0); /* IE8 and down */
-}
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#004d9f), to(#049cd9));
+  background-image: -webkit-linear-gradient(#004d9f, #049cd9);
+  background-image: -moz-linear-gradient(#004d9f, #049cd9);
+  background-image: -o-linear-gradient(top, #004d9f, #049cd9);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#004d9f), to(#049cd9));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#004D9F', endColorstr='#049cd9', GradientType=0);
+  /* IE8 and down */ }
+
 /* supporting docs pages */
 .subhead {
   background-color: #767d80;
@@ -78,22 +76,21 @@ section > .row {
   background-image: -moz-linear-gradient(#565d60, #767d80);
   background-image: -o-linear-gradient(top, #565d60, #767d80);
   background-image: -khtml-gradient(linear, left top, left bottom, from(#565d60), to(#767d80));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#565d60', endColorstr='#767d80', GradientType=0); /* IE8 and down */
-}
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#565d60', endColorstr='#767d80', GradientType=0);
+  /* IE8 and down */ }
+
 .subhead .inner {
-  padding: 36px 0 27px;
-}
+  padding: 36px 0 27px; }
+
 .subhead h1,
 .subhead p {
-  text-align: left;
-}
-.subhead h1 {
-  font-size: 40px;
-}
-.subhead p a {
-  font-weight: normal;
-}
+  text-align: left; }
 
+.subhead h1 {
+  font-size: 40px; }
+
+.subhead p a {
+  font-weight: normal; }
 
 /* Footer
 -------------------------------------------------- */
@@ -103,13 +100,13 @@ section > .row {
   padding: 30px 0;
   text-shadow: 0 1px 0 #fff;
   border-top: 1px solid #e5e5e5;
-  -webkit-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
-     -moz-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
-/*          box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
-*/}
+  -webkit-box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.025);
+  -moz-box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.025);
+  /*          box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+  */ }
+
 .footer p {
-  color: #555;
-}
+  color: #555; }
 
 /* Make footer bottom: http://smithware.co.uk/main/wordpress/2011/09/01/bootstrap-css-framework-and-a-sticky-footer/ */
 .bottombar {
@@ -119,8 +116,8 @@ section > .row {
   left: 0;
   right: 0;
   z-index: 10000;
-  overflow: visible;
-}
+  overflow: visible; }
+
 .bottombar .fill {
   background: #222;
   background-color: #222222;
@@ -134,21 +131,21 @@ section > .row {
   background-image: linear-gradient(top, #333333, #222222);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-}
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1); }
+
 .bottombar a {
   color: #bfbfbf;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); }
+
 .bottombar a:hover, .bottombar ul li.active a {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ffffff;
-  text-decoration: none;
-}
+  text-decoration: none; }
+
 .bottombar h3 {
-  position: relative;
-}
+  position: relative; }
+
 .bottombar h3 a {
   float: left;
   display: block;
@@ -157,8 +154,8 @@ section > .row {
   color: #ffffff;
   font-size: 20px;
   font-weight: 200;
-  line-height: 1;
-}
+  line-height: 1; }
+
 .bottombar form {
   float: left;
   margin: 5px 0 0 0;
@@ -166,8 +163,8 @@ section > .row {
   filter: alpha(opacity=100);
   -khtml-opacity: 1;
   -moz-opacity: 1;
-  opacity: 1;
-}
+  opacity: 1; }
+
 .bottombar form input {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.3);
@@ -188,19 +185,19 @@ section > .row {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0px rgba(255, 255, 255, 0.25);
   -webkit-transition: none;
   -moz-transition: none;
-  transition: none;
-}
+  transition: none; }
+
 .bottombar form input:-moz-placeholder {
-  color: #e6e6e6;
-}
+  color: #e6e6e6; }
+
 .bottombar form input::-webkit-input-placeholder {
-  color: #e6e6e6;
-}
+  color: #e6e6e6; }
+
 .bottombar form input:hover {
   background-color: #bfbfbf;
   background-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
-}
+  color: #fff; }
+
 .bottombar form input:focus, .bottombar form input.focused {
   outline: none;
   background-color: #fff;
@@ -210,48 +207,48 @@ section > .row {
   padding: 5px 10px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-}
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15); }
+
 .bottombar ul {
   display: block;
   float: left;
   margin: 0 10px 0 0;
-  position: relative;
-}
+  position: relative; }
+
 .bottombar ul.secondary-nav {
   float: right;
   margin-left: 10px;
-  margin-right: 0;
-}
+  margin-right: 0; }
+
 .bottombar ul li {
   display: block;
   float: left;
-  font-size: 13px;
-}
+  font-size: 13px; }
+
 .bottombar ul li a {
   display: block;
   float: none;
   padding: 10px 10px 11px;
   line-height: 19px;
-  text-decoration: none;
-}
+  text-decoration: none; }
+
 .bottombar ul li a:hover {
   color: #fff;
-  text-decoration: none;
-}
+  text-decoration: none; }
+
 .bottombar ul li.active a {
   background-color: #222;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+  background-color: rgba(0, 0, 0, 0.5); }
+
 .bottombar ul.primary-nav li ul {
-  left: 0;
-}
+  left: 0; }
+
 .bottombar ul.secondary-nav li ul {
-  right: 0;
-}
+  right: 0; }
+
 .bottombar ul li.menu {
-  position: relative;
-}
+  position: relative; }
+
 .bottombar ul li.menu a.menu:after {
   width: 0px;
   height: 0px;
@@ -267,34 +264,32 @@ section > .row {
   filter: alpha(opacity=50);
   -khtml-opacity: 0.5;
   -moz-opacity: 0.5;
-  opacity: 0.5;
-}
+  opacity: 0.5; }
+
 .bottombar ul li.menu.open a.menu, .bottombar ul li.menu.open a:hover {
   background-color: #444;
   background-color: rgba(255, 255, 255, 0.1);
   *background-color: #444;
   /* IE6-7 */
- 
-  color: #fff;
-}
+  color: #fff; }
+
 .bottombar ul li.menu.open ul {
-  display: block;
-}
+  display: block; }
+
 .bottombar ul li.menu.open ul li a {
   background-color: transparent;
-  font-weight: normal;
-}
+  font-weight: normal; }
+
 .bottombar ul li.menu.open ul li a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   *background-color: #444;
   /* IE6-7 */
- 
-  color: #fff;
-}
+  color: #fff; }
+
 .bottombar ul li.menu.open ul li.active a {
   background-color: rgba(255, 255, 255, 0.1);
-  font-weight: bold;
-}
+  font-weight: bold; }
+
 .bottombar ul li ul {
   background-color: #333;
   float: left;
@@ -313,39 +308,38 @@ section > .row {
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
- 
   -webkit-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.6);
-}
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.6); }
+
 .bottombar ul li ul li {
   float: none;
   clear: both;
   display: block;
   background: none;
-  font-size: 12px;
-}
+  font-size: 12px; }
+
 .bottombar ul li ul li a {
   display: block;
   padding: 6px 15px;
   clear: both;
   font-weight: normal;
   line-height: 19px;
-  color: #bbb;
-}
+  color: #bbb; }
+
 .bottombar ul li ul li a:hover {
   background-color: #333;
   background-color: rgba(255, 255, 255, 0.25);
-  color: #fff;
-}
+  color: #fff; }
+
 .bottombar ul li ul li.divider {
   height: 1px;
   overflow: hidden;
   background: #222;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 5px 0;
-}
+  margin: 5px 0; }
+
 .bottombar ul li ul li span {
   clear: both;
   display: block;
@@ -353,5 +347,4 @@ section > .row {
   padding: 6px 15px;
   cursor: default;
   color: #808080;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-}
+  border-top: 1px solid rgba(0, 0, 0, 0.2); }
