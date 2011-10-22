@@ -18,6 +18,16 @@
           </ul>
           <ul style="float:right">
             <% if user_signed_in? %>
+              <li style="float:right">
+                <%= link_to "#", :title => "You can create as many test charges as you like while unactivated. Provide account information to activate instantly.", :class => "tipsy_tooltip" do %>
+                  <% if current_user.live_mode? %>
+                    <span class="label success more_padding">LIVE</span>
+                  <% else %>
+                    <span class="label warning more_padding">DEMO</span>
+                  <% end %>
+                <% end %>
+              </li>
+
               <li class="dropdown" data-dropdown="dropdown" style="float:right">
                 <%= link_to current_user.email, "#", :class => "dropdown-toggle" %>
                 <ul class="dropdown-menu">

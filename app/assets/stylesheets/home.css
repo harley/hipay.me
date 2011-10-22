@@ -2,4 +2,9 @@
   clear: both; }
 
 #broughtby-image a {
-  margin-bottom: 20px; }
+  margin-bottom: 20px; 
+}
+
+span.more_padding {
+  padding: 10px;
+}
