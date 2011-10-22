@@ -65,21 +65,24 @@
     </div>
 
     <footer class="footer">
-      <div class="container">
-        <p class="pull-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>
-          Designed to make getting paid dead simple!
-        </p>
-      </div>
+    <div class="container">
+      <p class="pull-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>
+        Designed to make getting paid dead simple!
+        <p id="broughtby">
+          Brought to you by the team behind</p>
+        <p id="broughtby-image"> <%= image_tag("sociallogo-330x75.png") %>
+      </p>
+    </div>
     </footer>
   </body>
 </html>
 <%# HACK to make dropdown work %>
 <script type="text/javascript" language="javascript" charset="utf-8">
-//<![CDATA[
-  $(".topbar").dropdown();
+  //<![CDATA[
+$(".topbar").dropdown();
 //]]>
 </script>
 
