@@ -47,13 +47,18 @@ section > .row {
 .jumbotron p {
   font-weight: 300;
 }
-.jumbotron .lead {
+.jumbotron .lead, .lead {
   font-size: 20px;
   line-height: 27px;
 }
 .jumbotron p a {
   color: #fff;
   font-weight: bold;
+}
+
+p.medium {
+  font-size: 16px;
+  line-height: 22px;
 }
 
 /* Specific jumbotrons

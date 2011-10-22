@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     live_stripe_public_key.present? and live_stripe_private_key.present?
   end
 
+  def using_global_test_keys?
+    test_stripe_public_key.blank? || test_stripe_private_key.blank?
+  end
+
   def set_live_stripe_keys keys
     if keys
       self.live_stripe_public_key = keys[:public_key]

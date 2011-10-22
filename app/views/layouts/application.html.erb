@@ -87,6 +87,7 @@
     <% else %>
       <div class="container" style="margin-top:3em;margin-bottom:3em">
         <%= content_for?(:content) ? yield(:content) : yield %>
+        <div class="clear"></div>
       </div>
     <% end %>
 

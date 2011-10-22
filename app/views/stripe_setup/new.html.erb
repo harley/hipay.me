@@ -1,10 +1,10 @@
-<p>
-  To accept real payments, you only need to create an account with https://stripe.com, and fill in the Stripe public and private keys below.
+<p class="medium">
+  To accept real payments, you only need to create an account with https://stripe.com, and fill in the Stripe public and private keys (obtained from <%= link_to "https://manage.stripe.com/account", "https://manage.stripe.com/account" %>) below.
 </p>
 
 <%= form_tag stripe_setup_path, :class => "form-stacked" do %>
   <div class="row">
-    <div class="span-one-third">
+    <div class="span6">
     <fieldset>
       <div class="clearfix">
         <%= label_tag 'stripe_live_public_key' %>
@@ -44,15 +44,30 @@
       </div>
     </fieldset>
   </div>
-  <div class="span-two-third">
+  <div class="span9">
     <% if @user.live_mode? %>
       <h3>To go back to Demo mode...</h3>
       <%= link_to "Go back to Demo mode", confirm_demo_path, :class => "btn large" %>
-    <% elsif @user.live_keys_present? %>
-      <h3> It seems that you have the live keys set up...  </h3>
-      <%= link_to "Go live now", confirm_live_path, :class => "btn success large" %>
+    <% else %>
+      <% if @user.using_global_test_keys? %>
+        <p class="medium">Your account is currently linked with a default Stripe test account. You can <%= link_to "sign in on Stripe", "https://manage.stripe.com/login" %> with the following credentials to check out the test charges you made so far. </p>
+        <p>
+          <strong style="width:100px;display:inline-block;">Email</strong> stripe_test@hipay.me<br />
+          <strong style="width:100px;display:inline-block">Password</strong> hipayme
+        </p>
+        <p>
+          Please note this account has test charges from other new users as well. To see only your own test charges, <%= link_to "input your own test public and private keys", "#", :onclick => "$('#toggle-extra-view').click();return false;" %> on the left and click <strong>Save changes</strong>.
+        </p>
+      <% end %>
+      
+      <% if @user.live_keys_present? %>
+        <h3> 
+          It seems that you have the live keys set up. Please double check the values and you can... 
+          <%= link_to "Go live now", confirm_live_path, :class => "btn success large" %>
+        </h3>
+      <% end %>
     <% end %>
-  </div>
+    </div>
   </div>
 <% end %>
 <script type="text/javascript" language="javascript" charset="utf-8">
