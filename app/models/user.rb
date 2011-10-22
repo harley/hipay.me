@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     email
   end
 
+  def no_invoices_yet?
+    invoices.size.zero?
+  end
+
   def stripe_public_key
     if live_mode?
       live_stripe_public_key

@@ -64,10 +64,12 @@
 
     <div class="container">
       <% flash.each do |name, msg| %>
-        <p></p>
-        <%= content_tag :div, :class => "alert-message #{name} fade in", 'data-alert' => "alert" do %>
-          <a class="close" href="#">×</a>
-          <%= raw msg %>
+        <% if msg.present? %>
+          <p></p>
+          <%= content_tag :div, :class => "alert-message #{name} fade in", 'data-alert' => "alert" do %>
+            <a class="close" href="#">×</a>
+            <%= raw msg %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
