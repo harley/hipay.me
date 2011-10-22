@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20111021223218) do
     t.string   "name"
     t.integer  "amount"
     t.text     "description"
+    t.text     "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

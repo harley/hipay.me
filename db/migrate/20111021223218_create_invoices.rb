@@ -5,6 +5,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.string :name
       t.integer :amount
       t.text :description
+      t.text :token
 
       t.timestamps
     end
