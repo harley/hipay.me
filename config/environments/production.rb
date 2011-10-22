@@ -47,6 +47,7 @@ HipayMe::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.smtp_settings = YAML.load_file(File.join(Rails.root, "config", "keys", "mailjet.yml"))
 
   # Enable threaded mode
   # config.threadsafe!

@@ -1,0 +1,8 @@
+--- 
+  :domain: hipay.me
+  :authentication: :plain
+  :address: in.mailjet.com
+  :user_name: 48ff8790be94a4091d02d7d9bab644c6
+  :port: 587
+  :password: 78cf6b5b5aacf4dc3a4f8eb9c7255ff4
+  :enable_starttls_auto: true
