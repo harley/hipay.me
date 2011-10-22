@@ -19,7 +19,7 @@
           <ul style="float:right">
             <% if user_signed_in? %>
               <li style="float:right">
-                <%= link_to "#", :title => "You can create as many test charges as you like while unactivated. Provide account information to activate instantly.", :class => "tipsy_tooltip" do %>
+                <%= link_to go_live_path, :title => "You can create as many test charges as you like while unactivated. Provide account information to activate instantly.", :class => "tipsy_tooltip" do %>
                   <% if current_user.live_mode? %>
                     <span class="label success more_padding">LIVE</span>
                   <% else %>
@@ -50,12 +50,12 @@
     <header class="jumbotron masthead" id="overview">
     <div class="inner">
       <div class="container">
-        <h1>Easiest way to get PAID!</h1>
+        <h1>Stupidly simple to get <em style="text-decoration: line-through">laid</em> PAID!</h1>
+        <p class="lead">
+          No Paypal or bank transfers. No cheques in snail mails. It's gratifying!
+        </p>
         <p class="lead">
           Send your friends a link. Your friends can pay you immediately. 
-        </p>
-        <p>
-          No Paypal or bank transfers. No cheques in snail mails. It's gratifying!
         </p>
         <%= yield(:header) if content_for?(:header) %>
       </div>
@@ -64,6 +64,7 @@
 
     <div class="container">
       <% flash.each do |name, msg| %>
+        <p></p>
         <%= content_tag :div, :class => "alert-message #{name} fade in", 'data-alert' => "alert" do %>
           <a class="close" href="#">×</a>
           <%= raw msg %>

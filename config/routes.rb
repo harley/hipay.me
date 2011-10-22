@@ -1,4 +1,6 @@
 HipayMe::Application.routes.draw do
+  match 'go_live' => "stripe_setup#new"
+  resource :stripe_setup, :controller => :stripe_setup
   resources :invoices
   resources :payments do
     member do

@@ -12,4 +12,18 @@ class User < ActiveRecord::Base
   def to_s
     email
   end
+
+  def set_live_stripe_keys keys
+    if keys
+      self.live_stripe_public_key = keys[:public_key]
+      self.live_stripe_private_key = keys[:private_key]
+    end
+  end
+
+  def set_test_stripe_keys keys
+    if keys
+      self.test_stripe_public_key = keys[:public_key]
+      self.test_stripe_private_key = keys[:private_key]
+    end
+  end
 end

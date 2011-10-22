@@ -1,0 +1,53 @@
+<p>
+  To accept real payments, you only need to create an account with https://stripe.com, and fill in the Stripe public and private keys below.
+</p>
+
+<%= form_tag stripe_setup_path, :class => "form-stacked" do %>
+  <fieldset>
+    <div class="clearfix">
+      <%= label_tag 'stripe_live_public_key' %>
+      <div class="input">
+        <%= text_field_tag 'stripe[live][public_key]', @user.live_stripe_public_key %>
+      </div>
+    </div>
+
+     <div class="clearfix">
+      <%= label_tag 'stripe_live_private_key' %>
+      <div class="input">
+        <%= text_field_tag 'stripe[live][private_key]', @user.live_stripe_private_key %>
+      </div>
+    </div>
+    <%= submit_tag "Save changes", :class => "btn primary" %>
+    <p>
+    </p>
+    <div>
+      <span id="toggle-extra-view" style="cursor:pointer;" class="label info">
+        Add your Stripe test keys as well
+      </span>
+      <div style="display:none">
+        <div class="clearfix">
+          <%= label_tag 'stripe_test_public_key' %>
+          <div class="input">
+            <%= text_field_tag 'stripe[test][public_key]', @user.test_stripe_public_key %>
+          </div>
+        </div>
+
+         <div class="clearfix">
+          <%= label_tag 'stripe_test_private_key' %>
+          <div class="input">
+            <%= text_field_tag 'stripe[test][private_key]', @user.test_stripe_private_key %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+<script type="text/javascript" language="javascript" charset="utf-8">
+//<![CDATA[
+$(function(){
+    $("#toggle-extra-view").click(function(){
+        $(this).next().slideToggle();
+    })
+})
+//]]>
+</script>

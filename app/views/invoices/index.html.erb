@@ -3,11 +3,9 @@
 <table class="zebra-striped">
   <thead>  
     <tr>
-      <th>User</th>
-      <th>Name</th>
+      <th>Invoice</th>
       <th>Amount</th>
       <th>Description</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -15,13 +13,11 @@
   <% @invoices.each do |invoice| %>
     <tbody>
       <tr>
-        <td><%= invoice.user %></td>
-        <td><%= invoice.name %></td>
+        <td><%= invoice.token %></td>
         <td><%= invoice.amount %></td>
         <td><%= invoice.description %></td>
-        <td><%= link_to 'Show', invoice %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
+        <td><%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     </tbody>
   <% end %>
