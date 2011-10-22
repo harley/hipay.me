@@ -1,6 +1,6 @@
-<p class="alert-message success">
+<h3>
   Thank you! Your credit card ending <span style="color:green;font-weight:bold"><%= @payment.last4 %></span> has been charged <%= number_to_currency @payment.invoice.amount %>
-</p>
+</h3>
 
 <%= form_for @payment, :html => {:class => "form-stacked"} do |f| %>
   <div class="clearfix">

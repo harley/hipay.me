@@ -9,8 +9,18 @@
     You are about to pay <%= number_to_currency @invoice.amount %> to <%= @invoice.user %>.
   </h2>
 
+  <div>Note from <%= @invoice.user %>:<br />
+    <%= simple_format @invoice.description %>
+  </div>
+
   <%= form_for @payment do |f| %>
-    <fieldset style="width: 600px">
+    <% unless @invoice.user.live_mode? %>
+      <div class="warning" style="color:brown;">
+        Please note you are in <strong>Demo</strong> mode. The only credit card number that works is <strong>'4242424242424242'</strong>
+      </div>
+    <% end %>
+
+    <fieldset style="width: 600px;margin-bottom:6em">
       <div class="alert-message error" style="display:none">
         <span id="stripe_error">
           <noscript style="display:block !important">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
