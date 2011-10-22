@@ -10,7 +10,7 @@ class Invoice < ActiveRecord::Base
   validates_numericality_of :amount, :greater_than => 0
 
   def amount_in_cents
-    amount * 100
+    (amount * 100).to_i
   end
 
   def total_collected
