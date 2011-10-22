@@ -1,76 +1,75 @@
 <%= content_for :header do %>
-  <div style="margin: 30px auto 0; width: 85px">
-    <%= link_to "Sign up", "#signup", :class => "btn success large"  %>
-  </div>
+  <% unless user_signed_in? %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="row" style="width: 480px; margin:0 auto;margin-top:40px">
+        <%= f.email_field :email, :placeholder => "Email", :class => "span3", :style => "padding: 10px;margin: 10px" %>
+        <%= f.password_field :password, :placeholder => "Password", :class => "span3", :style => "padding: 10px;margin: 10px", :autocomplete => 'off' %>
+        <%= f.submit "Sign up", :class => "btn success", :style => "padding: 10px;margin: 10px" %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
 
-  <section class="reason">
+<section class="reason">
+<div class="row">
+  <div class="span-two-thirds">
+    <h1 class="page-header">Simple Billing for Clients</h1>
+    <ul>
+      <li>You're a freelancer</li>
+      <li>You don't want to wait 30-90 days to be paid via paper invoice</li>
+      <li>You want your clients to pay you easily and securely through credit cards</li>
+      <li><%= link_to "hipay.me", root_url %> lets you do all that with no development steps</li>
+    </ul>
+  </div>
+  <div class="span-one-third">
+    <%= image_tag 'simplebilling.png', :class => "span4" %>
+  </div>
+</div>
+</section>
+
+<section class="reason odd">
   <div class="row">
-    <div class="span-two-thirds">
-      <h1 class="page-header">Simple Billing for Clients</h1>
-      <p> 
-        You're a freelancer and you don't want to wait 30-90 days to be paid via paper invoice! You want a secure, quick way to accept credit cards -- without the typical hassles.
-      </p>
-      <p>hi<strong>pay</strong>.me: Credit card billing for Real People, Secure, and ready for you: No development necessary!</p>
-    </div>
     <div class="span-one-third">
-      <%= image_tag 'simplebilling.png', :class => "span4" %>
+      <%= image_tag "fastsecurepayment.png", :class => "span4" %>
+    </div>
+    <div class="span-two-thids">
+      <h1 class="page-header">Fast, Secure Payment for Freelancers</h1>
+      <p>
+        <ul>
+          <li>Average wait time for mailed cash: Forever - no guarentees!</li>
+          <li>Setting up your own merchant, gateway, and processor accounts: 30 days or more!</li>
+          <li>Average wait time for mailed checks: 7 days</li>
+        </ul>
+      </p>
     </div>
   </div>
-  </section>
+</section>  
 
-  <section class="reason odd">
-    <div class="row">
-      <div class="span-one-third">
-        <%= image_tag "fastsecurepayment.png", :class => "span4" %>
-      </div>
-      <div class="span-two-thids">
-        <h1 class="page-header">Fast, Secure Payment for Freelancers</h1>
-        <p>
-          <ul>
-            <li>Average wait time for mailed cash: Forever - no guarentees!</li>
-            <li>Setting up your own merchant, gateway, and processor accounts: 30 days or more!</li>
-            <li>Average wait time for mailed checks: 7 days</li>
-          </ul>
-        </p>
-      </div>
+<section class="reason">
+  <div class="row">
+    <div class="span-two-thirds">
+      <h1 class="page-header">Pricing</h1>
+      <p>Streamlined pricing - <%= link_to "hipay.me", root_url %> basic service is free!
+        <ul>
+          <li>We use Stripe to put money in your account - 2.9% + $.30 per transaction</li>
+          <li>Addon custom layout and logo for only $1 per transaction</li>
+          <li>Addon custom domain & SSL for only $1 per transaction</li>
+        </ul>
+      </p>
     </div>
-  </section>  
+    <div class="span-one-third">
+      <%= image_tag "pricing.png", :class => "span4" %>
+    </div>
+  </div>
+</section>
 
-  <section class="reason">
-    <div class="row">
-      <div class="span-two-thirds">
-        <h1 class="page-header">Pricing</h1>
-        <p>Streamlined pricing - hipay.me basic service is free!
-          <ul>
-            <li>We use Stripe to put money in your account - 2.9% + $.30 per transaction</li>
-            <li>Addon custom layout and logo for only $1 per transaction</li>
-            <li>Addon custom domain & SSL for only $1 per transaction</li>
-          </ul>
-        </p>
-      </div>
-      <div class="span-one-third">
-        <%= image_tag "pricing.png", :class => "span4" %>
-      </div>
-    </div>
-  </section>
-
-  <section class="reason odd" style="margin: 2em auto; width: 490px">
-    <div class="row">
-      <h1 class="page-header">How it Works</h1>
-      <p>We leverage Stripe</p>
-      <ul>
-        <li>Blah</li>
-      </ul>
-    </div>
-  </section>
-  <% unless user_signed_in? %>
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
-        <%= devise_error_messages! %>
-        <div class="row" style="width: 480px; margin: 10px auto">
-          <%= f.email_field :email, :placeholder => "Email", :class => "span3", :style => "padding: 10px;margin: 10px" %>
-          <%= f.password_field :password, :placeholder => "Password", :class => "span3", :style => "padding: 10px;margin: 10px", :autocomplete => 'off' %>
-          <%= f.submit "Sign up", :class => "btn success", :style => "padding: 10px;margin: 10px" %>
-        </div>
-      <% end %>
-  <% end %>
+<section class="reason odd" style="margin: 2em auto; width: 490px">
+  <div class="row">
+    <h1 class="page-header">How it Works</h1>
+    <p>We leverage Stripe</p>
+    <ul>
+      <li>Blah</li>
+    </ul>
+  </div>
+</section>

@@ -1,7 +1,7 @@
 <%= content_for :sidebar do %>
   <ul class="unstyled">
-    <li class="active">Payments</li>
-    <li>Account</li>
+    <li><%= link_to "New Invoice", new_invoice_path %></li>
+    <li><%= link_to "Demo/Live mode", go_live_path %></li>
   </ul>
 <% end %>
 
