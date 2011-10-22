@@ -3,12 +3,11 @@ class Invoice < ActiveRecord::Base
   has_many :payments
 
   before_create :generate_token
-
-  validates_presence_of :token
-  validates_uniqueness_of :token
+  validates_uniqueness_of :token, :allow_blank => true
   validates_presence_of :amount
   validates_presence_of :description
   validates_presence_of :user_id
+  validates_numericality_of :amount, :greater_than => 0
 
   def amount_in_cents
     amount * 100
