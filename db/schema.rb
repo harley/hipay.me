@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021223218) do
+ActiveRecord::Schema.define(:version => 20111022005921) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(:version => 20111021223218) do
   end
 
   add_index "invoices", ["user_id"], :name => "index_invoices_on_user_id"
+
+  create_table "payments", :force => true do |t|
+    t.integer  "invoice_id"
+    t.string   "email"
+    t.string   "last4"
+    t.boolean  "live_mode",       :default => false
+    t.text     "stripe_response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["invoice_id"], :name => "index_payments_on_invoice_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

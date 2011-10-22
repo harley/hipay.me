@@ -1,5 +1,6 @@
 HipayMe::Application.routes.draw do
   resources :invoices
+  resources :payments
 
   devise_for :users
 
@@ -62,4 +63,5 @@ HipayMe::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  match ':invoice_token' => 'payments#new', :as => :pay_invoice_by_token
 end

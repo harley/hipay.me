@@ -8,7 +8,7 @@
 
 <h2 id="heading">Here's your unique payment link</h2>
 
-<% link = "http://hipay.me/few809hew937u5" %>
+<% link = pay_invoice_by_token_url(@invoice.token) %>
 <p class="large">
   <%= text_field_tag nil, link, :class => "url-field title span10", :style => "font-size: 24px; padding: 15px" %>
   <%= clippy link, "#FFFFFF" %>

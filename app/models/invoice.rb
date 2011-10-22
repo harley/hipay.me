@@ -1,7 +1,12 @@
 class Invoice < ActiveRecord::Base
   belongs_to :user
+  has_many :payments
 
   before_create :generate_token
+
+  validates_presence_of :amount
+  validates_presence_of :description
+  validates_presence_of :user_id
 
   private
   def generate_token

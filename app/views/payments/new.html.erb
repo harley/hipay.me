@@ -1,0 +1,40 @@
+<% unless @invoice %>
+  <h1>Not Found.</h1>
+<% else %>
+  <% if @invoice.name %>
+    <h1>Hi <%= @invoice.name %>,</h1>
+  <% end %>
+
+  <h2>
+    You are about to pay <%= number_to_currency @invoice.amount %> to <%= @invoice.user %>.
+  </h2>
+
+  <%= form_for @payment do |f| %>
+    <fieldset style="width: 600px">
+      <div class="clearfix">
+        <%= label_tag :card_number %>
+        <div class="input">
+          <%= text_field_tag :card_number %>
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <%= label_tag "Expiry date" %>
+        <div class="input">
+          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", :class => "small"}%>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => "mini"}%>
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <%= label_tag :card_code, "CVV" %>
+        <div class="input">
+          <%= text_field_tag :card_code, nil, name: nil, class: "span1" %>
+        </div>
+      </div>
+      <div style="padding-left:90px">
+        <%= submit_tag "Pay now", :class => "btn primary medium" %>
+      </div>
+    </fieldset>
+  <% end %>
+<% end %>
