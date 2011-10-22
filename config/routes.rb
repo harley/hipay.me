@@ -1,4 +1,6 @@
 HipayMe::Application.routes.draw do
+  resources :invoices
+
   devise_for :users
 
   get "home/index"

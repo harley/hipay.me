@@ -1,0 +1,32 @@
+<h1>Listing invoices</h1>
+
+<table class="zebra-striped">
+  <thead>  
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @invoices.each do |invoice| %>
+    <tbody>
+      <tr>
+        <td><%= invoice.user %></td>
+        <td><%= invoice.name %></td>
+        <td><%= invoice.amount %></td>
+        <td><%= invoice.description %></td>
+        <td><%= link_to 'Show', invoice %></td>
+        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+        <td><%= link_to 'Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Invoice', new_invoice_path %>

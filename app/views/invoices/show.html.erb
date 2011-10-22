@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<style type="text/css" media="screen">
+  p.large{
+    margin: 2em 0;
+    font-size: 24px;
+  }
+</style>
+
+<h2 id="heading">Here's your unique payment link</h2>
+
+<% link = "http://hipay.me/few809hew937u5" %>
+<p class="large">
+  <%= text_field_tag nil, link, :class => "url-field title span10", :style => "font-size: 24px; padding: 15px" %>
+  <%= clippy link, "#FFFFFF" %>
+</p>
+
+<p class="large">
+  Send this link to your payer.  Click <%= link_to "here", link %> to preview what your payer would see.
+</p>
+
+<%# TODO put some buttons here %>
+
+<script type="text/javascript" language="javascript" charset="utf-8">
+//<![CDATA[
+$(function(){
+  $("input.url-field").click(function(){ $(this).focus().select(); })
+});
+//]]>
+</script>
