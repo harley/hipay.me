@@ -15,4 +15,21 @@ class StripeSetupController < ApplicationController
     end
     render :new
   end
+
+  def confirm_live
+    @user = current_user
+    if @user.update_attribute :live_mode, true
+      flash[:warning] = "You're live.  If your Stripe keys are correct, any payments made on your links will show up on your Stripe account."
+    else
+      flash[:error] = "Sorry. Can't go live. Email us at support@hipay.me"
+    end
+    redirect_to root_url
+  end
+
+  def confirm_demo
+    @user = current_user
+    @user.update_attribute :live_mode, false
+    flash[:info] = "You're back to Demo mode. Any question or confirm, email us at support@hipay.me"
+    redirect_to root_url
+  end
 end

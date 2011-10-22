@@ -3,44 +3,57 @@
 </p>
 
 <%= form_tag stripe_setup_path, :class => "form-stacked" do %>
-  <fieldset>
-    <div class="clearfix">
-      <%= label_tag 'stripe_live_public_key' %>
-      <div class="input">
-        <%= text_field_tag 'stripe[live][public_key]', @user.live_stripe_public_key %>
-      </div>
-    </div>
-
-     <div class="clearfix">
-      <%= label_tag 'stripe_live_private_key' %>
-      <div class="input">
-        <%= text_field_tag 'stripe[live][private_key]', @user.live_stripe_private_key %>
-      </div>
-    </div>
-    <%= submit_tag "Save changes", :class => "btn primary" %>
-    <p>
-    </p>
-    <div>
-      <span id="toggle-extra-view" style="cursor:pointer;" class="label info">
-        Add your Stripe test keys as well
-      </span>
-      <div style="display:none">
-        <div class="clearfix">
-          <%= label_tag 'stripe_test_public_key' %>
-          <div class="input">
-            <%= text_field_tag 'stripe[test][public_key]', @user.test_stripe_public_key %>
-          </div>
-        </div>
-
-         <div class="clearfix">
-          <%= label_tag 'stripe_test_private_key' %>
-          <div class="input">
-            <%= text_field_tag 'stripe[test][private_key]', @user.test_stripe_private_key %>
-          </div>
+  <div class="row">
+    <div class="span-one-third">
+    <fieldset>
+      <div class="clearfix">
+        <%= label_tag 'stripe_live_public_key' %>
+        <div class="input">
+          <%= text_field_tag 'stripe[live][public_key]', @user.live_stripe_public_key %>
         </div>
       </div>
-    </div>
-  </fieldset>
+
+       <div class="clearfix">
+        <%= label_tag 'stripe_live_private_key' %>
+        <div class="input">
+          <%= text_field_tag 'stripe[live][private_key]', @user.live_stripe_private_key %>
+        </div>
+      </div>
+      <%= submit_tag "Save changes", :class => "btn primary" %>
+      <p>
+      </p>
+      <div>
+        <span id="toggle-extra-view" style="cursor:pointer;" class="label info">
+          Add your Stripe test keys as well
+        </span>
+        <div style="display:none">
+          <div class="clearfix">
+            <%= label_tag 'stripe_test_public_key' %>
+            <div class="input">
+              <%= text_field_tag 'stripe[test][public_key]', @user.test_stripe_public_key %>
+            </div>
+          </div>
+
+           <div class="clearfix">
+            <%= label_tag 'stripe_test_private_key' %>
+            <div class="input">
+              <%= text_field_tag 'stripe[test][private_key]', @user.test_stripe_private_key %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="span-two-third">
+    <% if @user.live_mode? %>
+      <h3>To go back to Demo mode...</h3>
+      <%= link_to "Go back to Demo mode", confirm_demo_path, :class => "btn large" %>
+    <% elsif @user.live_keys_present? %>
+      <h3> It seems that you have the live keys set up...  </h3>
+      <%= link_to "Go live now", confirm_live_path, :class => "btn success large" %>
+    <% end %>
+  </div>
+  </div>
 <% end %>
 <script type="text/javascript" language="javascript" charset="utf-8">
 //<![CDATA[

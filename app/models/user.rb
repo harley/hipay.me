@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     email
   end
 
+  def live_keys_present?
+    live_stripe_public_key.present? and live_stripe_private_key.present?
+  end
+
   def set_live_stripe_keys keys
     if keys
       self.live_stripe_public_key = keys[:public_key]
