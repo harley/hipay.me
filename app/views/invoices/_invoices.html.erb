@@ -6,7 +6,6 @@
       <th>Total collected</th>
       <th>Description</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <% invoices.each_with_index do |invoice, i| %>
@@ -22,8 +21,8 @@
           <% else %>
             <%= link_to 'Edit', edit_invoice_path(invoice), :title => "Sorry, you cannot edit a link through which at least one payment has occurred.", :rel => "popover", :class => "btn tipsy_tooltip disabled", :id => "popover_#{i}" %>
           <% end %>
+          <%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete, class: "btn" %>
         </td>
-        <td><%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     </tbody>
   <% end %>
