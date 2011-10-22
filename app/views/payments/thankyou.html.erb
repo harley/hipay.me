@@ -2,11 +2,7 @@
   A copy of the receipt has been sent to <%= @payment.email %>
 </p>
 
-<%= form_tag(nil) do %>
-  <fieldset>
-    <h2>Thanks for using hipay.me</h2>
-    <h3>Like to collect payments with us? Enter a password to create an account.</h3>
-    <%= password_field_tag :password %>
-    <%= submit_tag "Start collecting payment now (UNDER CONSTRUCTION)", :class => "btn info" %>
-  </fieldset>
-<% end %>
+<h2>
+  Thanks for using <%= link_to "hipay.me", root_url %>
+</h2>
+<h2>Like to collect payments with us? <%= link_to "Sign up", root_url %> now.</h2>
