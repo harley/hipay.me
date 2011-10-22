@@ -1,0 +1,12 @@
+<p class="alert-message success">
+  A copy of the receipt has been sent to <%= @payment.email %>
+</p>
+
+<%= form_tag(nil) do %>
+  <fieldset>
+    <h2>Thanks for using hipay.me</h2>
+    <h3>Like to collect payments with us? Enter a password to create an account.</h3>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Start collecting payment now (UNDER CONSTRUCTION)", :class => "btn info" %>
+  </fieldset>
+<% end %>

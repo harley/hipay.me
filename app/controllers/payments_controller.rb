@@ -20,7 +20,13 @@ class PaymentsController < ApplicationController
   def update
     @payment = Payment.find params[:id]
     if params[:payment][:email]
-      @payment.email_and_save!
+      @payment.update_attribute :email, params[:payment][:email]
+      @payment.send_receipt
+      redirect_to thankyou_payment_path(@payment)
     end
+  end
+
+  def thankyou
+    @payment = Payment.find params[:id]
   end
 end

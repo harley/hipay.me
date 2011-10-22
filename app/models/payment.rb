@@ -21,8 +21,8 @@ class Payment < ActiveRecord::Base
     errors.add :base, "There was a problem with your credit card."
   end
 
-  def email_and_save
-    raise "NOT YET IMPLEMENTED"  
+  def send_receipt
+    PaymentMailer.receipt(self).deliver
   end
 
   def invoice_token

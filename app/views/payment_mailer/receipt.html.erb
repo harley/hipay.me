@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Invoice for your payment</h1>
+    <p>
+      This is just a basic receipt.  We'll pimp it up later. But hey, it's still a proof that you paid <%= number_to_currency @payment.invoice.amount %> to <%= @payment.invoice.user %>.
+    </p>
+    <p>
+      Thanks for using hipay.me!
+    </p>
+  </body>
+</html>

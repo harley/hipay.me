@@ -5,4 +5,6 @@ tmp/
 .sass-cache/
 public/assets/
 .DS_Store
-config/keys/stripe.rb
+config/initializers/stripe.rb
+config/keys/*.yml
+!config/keys/*.sample.yml

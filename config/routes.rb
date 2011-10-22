@@ -1,6 +1,10 @@
 HipayMe::Application.routes.draw do
   resources :invoices
-  resources :payments
+  resources :payments do
+    member do
+      get 'thankyou'
+    end
+  end
 
   devise_for :users
 
