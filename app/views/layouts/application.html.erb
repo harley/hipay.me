@@ -14,6 +14,7 @@
           <%= link_to "H!pay.me", root_url, :class => "brand" %>
           <ul class="nav">
             <li class="active"><%= link_to "Home", root_url %></li>
+            <li><%= link_to "Dashboard", dashboard_url %></li>
             <li><%= link_to "About Us", nil %></li>
           </ul>
           <ul style="float:right">
@@ -72,9 +73,23 @@
       <% end %>
     </div>
 
-    <div class="container" style="margin-top:3em;margin-bottom:3em">
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </div>
+    <% if content_for?(:sidebar) %>
+      <div class="container">
+        <p></p>
+        <div class="container-fluid">
+          <div class="sidebar">
+            <%= yield(:sidebar) %>
+          </div>
+          <div class="content">
+            <%= content_for?(:content) ? yield(:content) : yield %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="container" style="margin-top:3em;margin-bottom:3em">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
+    <% end %>
 
     <footer class="footer bottombar">
     <div class="container">

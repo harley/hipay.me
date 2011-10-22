@@ -1,6 +1,8 @@
-<h1>Editing invoice</h1>
+<% if @invoice.not_yet_used? %>
+  <%= render 'form' %>
+<% else %>
+  <div class="alert-message error">
+    Sorry, you cannot edit a link through which at least one payment has occurred.
+  </div>
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @invoice %> |
-<%= link_to 'Back', invoices_path %>

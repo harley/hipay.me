@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111022064459) do
+ActiveRecord::Schema.define(:version => 20111022081415) do
 
   create_table "invoices", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "amount"
+    t.decimal  "amount",      :default => 0.0
     t.text     "description"
     t.text     "token"
     t.datetime "created_at"
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(:version => 20111022064459) do
     t.integer  "invoice_id"
     t.string   "email"
     t.string   "last4"
-    t.boolean  "live_mode",       :default => false
+    t.boolean  "live_mode",                                     :default => false
     t.text     "stripe_response"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "amount",          :precision => 8, :scale => 2
   end
 
   add_index "payments", ["invoice_id"], :name => "index_payments_on_invoice_id"

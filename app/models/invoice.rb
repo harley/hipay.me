@@ -4,12 +4,22 @@ class Invoice < ActiveRecord::Base
 
   before_create :generate_token
 
+  validates_presence_of :token
+  validates_uniqueness_of :token
   validates_presence_of :amount
   validates_presence_of :description
   validates_presence_of :user_id
 
   def amount_in_cents
     amount * 100
+  end
+
+  def total_collected
+    payments.sum(:amount)
+  end
+
+  def not_yet_used?
+    payments.size.zero?  
   end
 
   private

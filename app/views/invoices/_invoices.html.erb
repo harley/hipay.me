@@ -1,0 +1,30 @@
+<table class="zebra-striped">
+  <thead>  
+    <tr>
+      <th>Link</th>
+      <th>Amount</th>
+      <th>Total collected</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% invoices.each_with_index do |invoice, i| %>
+    <tbody>
+      <tr>
+        <td><%= invoice_token_link invoice.token %></td>
+        <td><%= span_for_currency invoice.amount %></td>
+        <td><%= span_for_currency invoice.total_collected %></td>
+        <td><%= invoice.description %></td>
+        <td>
+          <% if invoice.not_yet_used? %>
+            <%= link_to 'Edit', edit_invoice_path(invoice), :class => "btn" %> 
+          <% else %>
+            <%= link_to 'Edit', edit_invoice_path(invoice), :title => "Sorry, you cannot edit a link through which at least one payment has occurred.", :rel => "popover", :class => "btn tipsy_tooltip disabled", :id => "popover_#{i}" %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

@@ -1,0 +1,21 @@
+<%= content_for :sidebar do %>
+  <ul class="unstyled">
+    <li class="active">Payments</li>
+    <li>Account</li>
+  </ul>
+<% end %>
+
+<%= content_for :content do %>
+  <h1>Active payments links</h1>
+  <%= render :partial => 'invoices/invoices', :object => @invoices %>
+
+  <h1>Transaction history</h1>
+  <ul>
+    <% @payments.each do |payment| %>
+      <li>
+        You were paid <%= span_for_currency payment.amount %> from link <%= invoice_token_link payment.token %> with credit card ending in <span class="last4"><%= payment.last4 %></span>
+        <span class="timestamp"><%= time_ago_in_words(payment.created_at) %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

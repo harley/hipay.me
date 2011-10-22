@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :invoices, :dependent => :destroy
+  has_many :payments, :through => :invoices
 
   def to_s
     email

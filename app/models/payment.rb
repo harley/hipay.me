@@ -7,6 +7,8 @@ class Payment < ActiveRecord::Base
   serialize :stripe_response, Stripe::Charge
 
   before_create :parse_stripe_response
+  delegate :amount, :to => :invoice
+  delegate :token, :to => :invoice
 
   def charge_and_save
     if valid?
@@ -37,6 +39,7 @@ class Payment < ActiveRecord::Base
     if stripe_response
       self.live_mode = stripe_response.livemode
       self.last4 = stripe_response.card.last4
+      self.amount = stripe_response.amount * 0.01
     end
   end
 end
