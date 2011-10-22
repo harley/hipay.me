@@ -1,6 +1,10 @@
 <% unless @invoice %>
   <h1>Not Found.</h1>
 <% else %>
+  <%= content_for :head do %>
+    <%= tag :meta, :name => "stripe-key", :content => @invoice.user.stripe_public_key %>
+  <% end %>
+
   <% if @invoice.name %>
     <h1>Hi <%= @invoice.name %>,</h1>
   <% end %>

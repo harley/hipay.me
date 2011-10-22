@@ -14,6 +14,22 @@ class User < ActiveRecord::Base
     email
   end
 
+  def stripe_public_key
+    if live_mode?
+      live_stripe_public_key
+    else
+      test_stripe_public_key.presence || TEST_STRIPE_PUBLIC_KEY
+    end
+  end
+
+  def stripe_private_key
+    if live_mode?
+      live_stripe_private_key
+    else
+      test_stripe_private_key.presence || TEST_STRIPE_PRIVATE_KEY
+    end
+  end
+
   def live_keys_present?
     live_stripe_public_key.present? and live_stripe_private_key.present?
   end

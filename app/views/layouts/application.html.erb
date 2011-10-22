@@ -5,7 +5,7 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
     <%= csrf_meta_tags %>
-    <%= tag :meta, :name => "stripe-key", :content => TEST_STRIPE_PUBLIC_KEY %>
+    <%= yield(:head) if content_for?(:head) %>
   </head>
   <body>
     <div class="topbar">

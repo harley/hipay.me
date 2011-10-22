@@ -11,7 +11,6 @@ payment =
     $('#new_payment').submit ->
       $('input[type=submit]').attr('disabled', true)
       payment.processCard()
-      return false
   
   processCard: ->
     card =
