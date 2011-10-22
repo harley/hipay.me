@@ -5,3 +5,4 @@ tmp/
 .sass-cache/
 public/assets/
 .DS_Store
+config/keys/stripe.rb

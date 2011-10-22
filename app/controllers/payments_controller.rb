@@ -4,4 +4,23 @@ class PaymentsController < ApplicationController
     @payment = @invoice.payments.build
   end
 
+  def create
+    @payment = Payment.new params[:payment]
+    if @payment.charge_and_save
+      redirect_to @payment, :notice => "Thank you!"
+    else
+      render :new
+    end
+  end
+
+  def show
+    @payment = Payment.find params[:id]
+  end
+
+  def update
+    @payment = Payment.find params[:id]
+    if params[:payment][:email]
+      @payment.email_and_save!
+    end
+  end
 end

@@ -8,6 +8,10 @@ class Invoice < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :user_id
 
+  def amount_in_cents
+    amount * 100
+  end
+
   private
   def generate_token
     self.token = Invoice.alphanumeric_random 5
@@ -20,5 +24,4 @@ class Invoice < ActiveRecord::Base
     1.upto(n){|i| s << VALID_ALPHANUMERIC.sample}
     s
   end
-
 end

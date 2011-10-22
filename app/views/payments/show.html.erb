@@ -1,0 +1,13 @@
+<p class="alert-message success">
+  Thank you! Your credit card ending <span style="color:green;font-weight:bold"><%= @payment.last4 %></span> has been charged <%= number_to_currency @payment.invoice.amount %>
+</p>
+
+<%= form_for @payment, :html => {:class => "form-stacked"} do |f| %>
+  <div class="clearfix">
+    <%= f.label :email, "Enter your email below to get a copy of the receipt" %>
+    <div class="input">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <%= f.submit 'Submit', :class => "btn primary" %>
+<% end %>

@@ -11,6 +11,12 @@
 
   <%= form_for @payment do |f| %>
     <fieldset style="width: 600px">
+      <div class="alert-message error" style="display:none">
+        <span id="stripe_error">
+          <noscript style="display:block !important">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+        </span>
+      </div>
+
       <div class="clearfix">
         <%= label_tag :card_number %>
         <div class="input">
@@ -21,8 +27,8 @@
       <div class="clearfix">
         <%= label_tag "Expiry date" %>
         <div class="input">
-          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", :class => "small"}%>
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => "mini"}%>
+          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class: "small"}%>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "mini"}%>
         </div>
       </div>
 
@@ -32,7 +38,12 @@
           <%= text_field_tag :card_code, nil, name: nil, class: "span1" %>
         </div>
       </div>
-      <div style="padding-left:90px">
+
+      <%= f.hidden_field :invoice_token, :value => params[:invoice_token] %>
+      <%= f.hidden_field :stripe_card_token %>
+      <%= f.hidden_field :description_for_stripe, :value => pay_invoice_by_token_url(params[:invoice_token]) %>
+      
+      <div style="padding-left:90px" data-alert="alert">
         <%= submit_tag "Pay now", :class => "btn primary medium" %>
       </div>
     </fieldset>
