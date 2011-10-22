@@ -1,15 +1,92 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style type="text/css">
+
+      #payee {
+        float: left;
+      }
+      #payer {
+        float: right;
+        padding-right: 25%;
+      }
+      #date_invoice {
+        float:right;   
+        padding-right: 50px;
+      }
+      #invoice_items {
+        width: 75%;
+        margin: 0px auto;
+        padding:100px 0px;
+      }
+      body { width: 75%;
+        margin: 50px auto;
+      }
+      header h1 {
+        text-align: center;
+      }
+      .clear {
+        clear: both;
+      }
+      footer {
+        padding: 50px;
+        background-color: grey;
+      }
+
+    </style>
+
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
-  <body>
-    <h1>Invoice for your payment</h1>
-    <p>
-      This is just a basic receipt.  We'll pimp it up later. But hey, it's still a proof that you paid <%= number_to_currency @payment.invoice.amount %> to <%= @payment.invoice.user %>.
-    </p>
-    <p>
-      Thanks for using hipay.me!
-    </p>
+  <body id="mainbody">
+    <header>
+
+      <h1>hi pay.me Invoice Receipt</h1>
+
+      <sidebar id="date_invoice">
+      10/21/2011 <br/>
+      Invoice #: 555 <br/>
+      </sidebar>
+
+    </header>
+
+    <div class="clear"</div>
+
+    <section id="payee">
+      <h2>Payee</h2>
+      Name <br/>
+      Email: <%= @payment.invoice.user %> <br/>
+    </section>
+
+    <section id="payer">
+      <h2>Payer</h2>
+      Name <br/>
+      Email <br/>
+    </section>
+
+
+    <div class="clear"</div>
+
+    <section id="invoice_items">
+
+    <h1> Invoice Items </h1>
+
+    <table>
+      <tr>
+        <td>1.</td> <td>Description</td> <td>Amount</td>
+      </tr>
+      <td>2.</td> <td>Description</td> <td>Amount</td>
+    </tr>
+  </table>
+  </section>
+
+  <section id="payment_summary">
+    Payment received Date, Time. <br/>
+    Credit Card: Ending in 4242 <br/>
+    Paid in full - $XXXX: <%= number_to_currency @payment.invoice.amount %> 
+  </section>
+
+  <footer id="thanks">
+    Thanks for using hipay.me!
+  </footer>
   </body>
 </html>
