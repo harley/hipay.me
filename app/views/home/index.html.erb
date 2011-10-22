@@ -1,14 +1,43 @@
-<style type="text/css" media="screen">
-  form#user_new{
-    margin-top: 4em;
-  }
-  form input{
-    font-size: 20px;
-    line-height: 20px;
-  }
-</style>
-<% unless user_signed_in? %>
   <%= content_for :header do %>
+        <%= link_to "Sign up", "#signup", :class => "btn success", :style => "padding: 10px;margin: 10px;" %>
+        <% #Harley please center this button %>
+    <% end %>
+
+<div class="reasons">
+  <div class="reason">
+  <h1>Simple Billing for Clients</h1>
+  <p>You're a freelancer and you don't want to wait 30-90 days to be paid via paper invoice! You want a secure, quick way to accept credit cards -- without the typical hassles.
+  </p>
+  <p>hi<strong>pay</strong>.me: Credit card billing for Real People, Secure, and ready for you: No development necessary!</p>
+</div>
+  <div class="reason">
+  <h1>Fast, Secure Payment for Freelancers</h1>
+  <p><ul>
+      <li>Average wait time for mailed cash: Forever - no guarentees!</li>
+      <li>Setting up your own merchant, gateway, and processor accounts: 30 days or more!</li>
+      <li>Average wait time for mailed checks: 7 days</li>
+    </ul>
+  </p>
+</div>
+  <div class="reason">
+  <h1>Pricing</h1>
+  <p>Streamlined pricing - hipay.me basic service is free!
+    <ul>
+      <li>We use Stripe to put money in your account - 2.9% + $.30 per transaction</li>
+      <li>Addon custom layout and logo for only $1 per transaction</li>
+      <li>Addon custom domain & SSL for only $1 per transaction</li>
+    </ul>
+  </p>
+</div>
+  <div class="reason">
+  <h1>How it Works</h1>
+  <p>We leverage Stripe 
+    <ul>
+      <li></li>
+    </ul>
+  </p>
+</div>
+<% unless user_signed_in? %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
       <%= devise_error_messages! %>
       <div class="row" style="width: 480px; margin: 10px auto">
@@ -17,10 +46,5 @@
         <%= f.submit "Sign up", :class => "btn success", :style => "padding: 10px;margin: 10px" %>
       </div>
     <% end %>
-  <% end %>
 <% end %>
-
-<div style="text-align: center;margin-top: 3em">
-  <h1>Vampire Hackathon</h1>
-  <p>Time: Friday Oct 21, 5PM - Saturday Oct 22, 7AM</p>
 </div>
