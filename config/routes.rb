@@ -1,4 +1,8 @@
 HipayMe::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   match 'dashboard' => "home#dashboard", :as => 'dashboard'
   match 'go_live' => "stripe_setup#new"
   match 'confirm_live' => "stripe_setup#confirm_live", :as => 'confirm_live'
@@ -6,7 +10,7 @@ HipayMe::Application.routes.draw do
 
   resource :stripe_setup, :controller => :stripe_setup
   resources :invoices
-  resources :payments do
+  resources :payments, :only => [] do
     member do
       get 'thankyou'
     end
