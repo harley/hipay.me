@@ -46,6 +46,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.save
+        AdminMailer.new_record_alert(@invoice).deliver if current_user.live_mode?
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render json: @invoice, status: :created, location: @invoice }
       else

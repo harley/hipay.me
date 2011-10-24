@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :invoices, :dependent => :destroy
   has_many :payments, :through => :invoices
 
+  after_create :alert_admin_of_new_user
+
   def to_s
     email
   end
@@ -54,5 +56,9 @@ class User < ActiveRecord::Base
       self.test_stripe_public_key = keys[:public_key]
       self.test_stripe_private_key = keys[:private_key]
     end
+  end
+
+  def alert_admin_of_new_user
+    AdminMailer.new_record_alert(self).deliver
   end
 end

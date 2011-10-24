@@ -8,6 +8,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new params[:payment]
     if @payment.charge_and_save
+      AdminMailer.new_record_alert(@payment).deliver if @payment.invoice.user.live_mode?
       redirect_to @payment, :notice => "Thank you!"
     else
       render :new
