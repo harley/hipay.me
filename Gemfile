@@ -17,7 +17,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'less-rails-bootstrap'
 gem 'devise'
 gem 'stripe'
 gem 'activeadmin'
