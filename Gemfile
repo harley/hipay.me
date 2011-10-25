@@ -50,4 +50,5 @@ group :development do
   gem 'letter_opener'
   gem 'hirb'
   gem 'heroku'
+  gem 'thin'
 end
