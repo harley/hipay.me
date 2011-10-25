@@ -55,3 +55,7 @@ module HipayMe
     config.assets.initialize_on_precompile = false
   end
 end
+
+#ActionView::Base.field_error_proc = proc { |input, instance| input }
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe }
+
