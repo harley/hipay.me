@@ -39,3 +39,18 @@ ul.dashboard_links a {
   font-size: 18px;
   line-height: 30px;
 }
+
+div#error_explanation {
+  background: #FAE5E3;
+  padding: 10px 0;
+  margin: -10px 0 1px;
+
+  h2 {
+    color: brown;
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+}
+

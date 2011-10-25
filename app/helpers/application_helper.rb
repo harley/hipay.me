@@ -19,4 +19,15 @@ module ApplicationHelper
         type.to_s
     end
   end
+
+  def custom_error_messages(record)
+    if record.errors.any?
+      title = content_tag(:h2, pluralize(record.errors.count, "error"))
+      errors = record.errors.full_messages.map{|msg| content_tag(:li, msg)}.join.html_safe
+      wrapper = content_tag :ul, title + errors
+      content_tag(:div, wrapper, :id => "error_explanation")
+    else
+      ""
+    end
+  end
 end
