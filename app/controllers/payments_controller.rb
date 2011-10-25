@@ -11,6 +11,7 @@ class PaymentsController < ApplicationController
       AdminMailer.new_record_alert(@payment).deliver if @payment.invoice.user.live_mode?
       redirect_to @payment, :notice => "Thank you!"
     else
+      flash[:error] = "There was an error processing your card."
       render :new
     end
   end

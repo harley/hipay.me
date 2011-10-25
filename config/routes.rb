@@ -10,7 +10,7 @@ HipayMe::Application.routes.draw do
 
   resource :stripe_setup, :controller => :stripe_setup
   resources :invoices
-  resources :payments, :only => [:create] do
+  resources :payments, :only => [:create, :show, :update] do
     member do
       get 'thankyou'
     end

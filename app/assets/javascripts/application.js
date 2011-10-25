@@ -6,11 +6,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap/bootstrap-modal.js
+//= require bootstrap/bootstrap-alerts.js
 //= require bootstrap/bootstrap-twipsy.js
 //= require bootstrap/bootstrap-dropdown.js
-//= require bootstrap/bootstrap-alerts.js
-//= require bootstrap/bootstrap-modal.js
-//= require bootstrap/bootstrap-tabs.js
 //= require bootstrap/bootstrap-popover.js
 //= require bootstrap/bootstrap-scrollspy.js
+//= require bootstrap/bootstrap-tabs.js
+//= require home
+//= require invoices
+//= require payments
+//= require stripe_setup
 //= require_self
