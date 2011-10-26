@@ -1,13 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
 .clear {
     clear: both;
 }
-#broughtby-image a {
-  margin-bottom: 20px;
-}
 #broughtby {
+  font-style: italic;
+  font-size: 14px;
+
+  a {
+  }
+
+  img{
+    height: 14px;
+  }
 }
 
 span.last4{
@@ -25,9 +34,6 @@ span.more_padding{
   padding: 5px 8px;
 }
 
-section.reason p, section.reason li {
-  font-size: 16px;
-}
 section.reason p{
   color: #666;
   line-height: 24px;
@@ -54,3 +60,35 @@ div#error_explanation {
   }
 }
 
+/* Footer
+-------------------------------------------------- */
+iframe[id^="stripeFrame"] {
+  display: none;
+}
+.wrapper {
+  margin: 0 0 -30px;
+}
+.footer_push{
+  height: 30px;
+}
+.footer {
+  @include vertical-gradient(#555, #222);
+  height: 30px;
+  overflow: hidden;
+  background-color: #333;
+  min-width: 940px;
+  padding: 0;
+  border-top: 1px solid #e5e5e5;
+  -webkit-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+     -moz-box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+/*          box-shadow: inset 0 5px 15px rgba(0,0,0,.025);
+*/
+}
+.footer p {
+  color: #666;
+  line-height: 30px;
+  vertical-align: middle;
+  color: #eee;
+}
+
+/* Make footer bottom: http://smithware.co.uk/main/wordpress/2011/09/01/bootstrap-css-framework-and-a-sticky-footer/ */

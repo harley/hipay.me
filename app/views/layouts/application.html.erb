@@ -74,34 +74,35 @@
       <% end %>
     </div>
 
-    <% if content_for?(:sidebar) %>
-      <div class="container">
-        <p></p>
-        <div class="container-fluid">
-          <div class="sidebar">
-            <%= yield(:sidebar) %>
-          </div>
-          <div class="content">
-            <%= content_for?(:content) ? yield(:content) : yield %>
+    <div class="wrapper">
+      <% if content_for?(:sidebar) %>
+        <div class="container">
+          <p></p>
+          <div class="container-fluid">
+            <div class="sidebar">
+              <%= yield(:sidebar) %>
+            </div>
+            <div class="content">
+              <%= content_for?(:content) ? yield(:content) : yield %>
+            </div>
           </div>
         </div>
-      </div>
-    <% else %>
-      <div class="container" style="margin-top:3em;margin-bottom:3em">
-        <%= content_for?(:content) ? yield(:content) : yield %>
-        <div class="clear"></div>
-      </div>
-    <% end %>
+      <% else %>
+        <div class="container" style="margin-top:3em;margin-bottom:3em">
+          <%= content_for?(:content) ? yield(:content) : yield %>
+          <div class="clear"></div>
+        </div>
+      <% end %>
 
-    <footer class="footer bottombar">
+      <div class="footer_push"> </div>
+    </div>
+    <footer class="footer">
     <div class="container">
       <p class="pull-right">
         <a href="#">Back to top</a>
       </p>
       <p id="broughtby">
-        Brought to you by the team behind
-      </p>
-      <p id="broughtby-image"> <a href="http://www.socialsci.com"><%= image_tag("sociallogo-200x36.png") %></a>
+        Brought to you by the team behind <a href="http://www.socialsci.com"><%= image_tag("sociallogo-200x36.png") %></a>
     </div>
     </footer>
   </body>
