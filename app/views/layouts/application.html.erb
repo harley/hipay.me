@@ -75,24 +75,19 @@
     </div>
 
     <div class="wrapper">
-      <% if content_for?(:sidebar) %>
-        <div class="container">
-          <p></p>
-          <div class="container-fluid">
-            <div class="sidebar">
-              <%= yield(:sidebar) %>
-            </div>
-            <div class="content">
-              <%= content_for?(:content) ? yield(:content) : yield %>
-            </div>
+      <div class="container" style="margin-top:3em;margin-bottom:3em">
+        <% if content_for?(:sidebar) %>
+          <div class="leftbar">
+            <%= yield(:sidebar) %>
           </div>
-        </div>
-      <% else %>
-        <div class="container" style="margin-top:3em;margin-bottom:3em">
-          <%= content_for?(:content) ? yield(:content) : yield %>
-          <div class="clear"></div>
-        </div>
-      <% end %>
+          <div class="rightbar">
+            <%= content_for?(:content) ? yield(:content) : yield %>
+          </div>
+        <% else %>
+            <%= content_for?(:content) ? yield(:content) : yield %>
+        <% end %>
+        <div class="clear"></div>
+      </div>
 
       <div class="footer_push"> </div>
     </div>

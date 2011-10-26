@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
-
 .clear {
     clear: both;
 }
+
 #broughtby {
   font-style: italic;
   font-size: 14px;
@@ -17,6 +17,16 @@
   img{
     height: 14px;
   }
+}
+
+.leftbar{
+  width: 180px;
+  float: left;
+}
+.rightbar{
+  width:740px;
+  margin-left: 20px;
+  float:left;
 }
 
 span.last4{

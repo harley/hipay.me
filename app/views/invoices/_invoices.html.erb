@@ -15,13 +15,13 @@
         <td><%= span_for_currency invoice.amount %></td>
         <td><%= span_for_currency invoice.total_collected %></td>
         <td><%= invoice.description %></td>
-        <td>
+        <td style="width:160px">
           <% if invoice.not_yet_used? %>
-            <%= link_to 'Edit', edit_invoice_path(invoice), :class => "btn" %> 
+            <%= link_to 'Edit', edit_invoice_path(invoice), :class => "btn small" %> 
           <% else %>
             <%= link_to 'Edit', edit_invoice_path(invoice), :title => "Sorry, you cannot edit a link through which at least one payment has occurred.", :rel => "popover", :class => "btn tipsy_tooltip disabled", :id => "popover_#{i}" %>
           <% end %>
-          <%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete, class: "btn" %>
+          <%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete, class: "btn small" %>
         </td>
       </tr>
     </tbody>
