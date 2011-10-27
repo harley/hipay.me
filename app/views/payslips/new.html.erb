@@ -5,11 +5,13 @@
   <li><%= link_to "custom", "#custom" %></li>
 </ul>
 
+<div class="clear"></div>
+<%= custom_error_messages @invoice %>
 <div id="my-tab-content" class="tab-content">
-  <section id="express" class="express">
+  <section id="express" class="active express">
     <%= form_for @invoice = Invoice.new do |f| %>
       <%= f.bootstrap_text_field :from, :label => "payment to", :value => current_user.email %>
-      <%= f.bootstrap_text_field :description, :label => "note" %>
+      <%= f.bootstrap_text_field :description, :label => "description" %>
       <div class="clearfix">
         <%= f.label :amount, "total" %>
         <div class="input">
@@ -19,16 +21,21 @@
           </div>
         </div>
       </div>
-
+      <div class="clearfix">
+        <div class="input">
+          <%= f.submit "Generate link", :class => "btn info large" %>
+        </div>
+      </div>
     <% end %>
   </section>
 
-  <section id="custom" class="active custom">
-    <%= form_for @invoice = Invoice.new do |f| %>
+  <section id="custom" class="custom">
+    <%= form_for @invoice = Invoice.new, :html => { :multipart => true } do |f| %>
       <fieldset>
         <div class="extra add_logo">
           Click here to add a custom logo
         </div>
+        <%= f.bootstrap_file_field :logo %>
         <%= f.bootstrap_text_field :from, :label => "payment to", :value => current_user.email %>
         <%= f.bootstrap_text_field :description, :label => "note" %>
         <div class="extra items">
@@ -60,7 +67,9 @@
             </div>
           </div>
         </div>
+        <div style="text-align:center"><%= f.submit "Generate link", :class => "btn info large" %></div>
       </fieldset>
     <% end %>
   </section>
 </div>
+

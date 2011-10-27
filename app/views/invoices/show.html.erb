@@ -5,6 +5,12 @@
   }
 </style>
 
+<% if @invoice.logo %>
+  <div class="invoice_logo">
+    <%= image_tag @invoice.logo.url %>  
+  </div>
+<% end %>
+
 <h2 id="heading">Here's your unique payment link</h2>
 
 <% link = pay_invoice_by_token_url(@invoice.token) %>

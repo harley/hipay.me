@@ -1,4 +1,6 @@
 class Invoice < ActiveRecord::Base
+  image_accessor :logo
+
   #TODO add this column
   attr_accessor :from
 

@@ -1,7 +1,3 @@
-class PayslipsController < ApplicationController
-  before_filter :authenticate_user!
-
-  def new
-    
-  end
+class PayslipsController < InvoicesController
+  # just here for mockup purpose for now...
 end

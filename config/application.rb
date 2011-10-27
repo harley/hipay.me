@@ -53,6 +53,9 @@ module HipayMe
 
     # If deplayed to HEROKU:
     config.assets.initialize_on_precompile = false
+    
+    # dragonfly
+    config.middleware.insert 0, 'Dragonfly::Middleware', :images
   end
 end
 
