@@ -24,6 +24,7 @@ gem "meta_search", '>= 1.1.0.pre'
 gem 'sass-rails',   '~> 3.1.4'
 gem 'bootstrap-form'
 gem 'dragonfly'
+gem 'fog'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
