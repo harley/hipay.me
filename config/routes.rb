@@ -8,6 +8,7 @@ HipayMe::Application.routes.draw do
   match 'confirm_live' => "stripe_setup#confirm_live", :as => 'confirm_live'
   match 'confirm_demo' => 'stripe_setup#confirm_demo', :as => 'confirm_demo'
 
+  resources :payslips, :as => "invoices"
   resource :stripe_setup, :controller => :stripe_setup
   resources :invoices
   resources :payments, :only => [:create, :show, :update] do

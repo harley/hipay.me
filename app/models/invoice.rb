@@ -1,4 +1,7 @@
 class Invoice < ActiveRecord::Base
+  #TODO add this column
+  attr_accessor :from
+
   belongs_to :user
   has_many :payments
 

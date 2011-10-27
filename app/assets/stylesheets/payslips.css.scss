@@ -1,0 +1,28 @@
+// Place all the styles related to the payslips controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+section.custom {
+  div.extra {
+    background-color: #b6e7fa;
+    padding: 10px;
+    text-align: center;
+  }
+
+  fieldset {
+    width: 450px;
+  }
+
+  .add_logo {
+    margin-bottom: 20px;
+  }
+
+  .add_item {
+    margin-bottom: 20px;
+  }
+  .total {
+    margin-top: 20px;
+  }
+  .items{
+
+  }
+}

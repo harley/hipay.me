@@ -1,0 +1,66 @@
+<h1 class="page-header">create a payslip</h1>
+
+<ul class="tabs" data-tabs="tabs">
+  <li class="active"><%= link_to "express", "#express" %></li>
+  <li><%= link_to "custom", "#custom" %></li>
+</ul>
+
+<div id="my-tab-content" class="tab-content">
+  <section id="express" class="express">
+    <%= form_for @invoice = Invoice.new do |f| %>
+      <%= f.bootstrap_text_field :from, :label => "payment to", :value => current_user.email %>
+      <%= f.bootstrap_text_field :description, :label => "note" %>
+      <div class="clearfix">
+        <%= f.label :amount, "total" %>
+        <div class="input">
+          <div class="input-prepend">
+            <span class="add-on">$</span>
+            <%= f.number_field :amount, :class => "mini", :step => "any" %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </section>
+
+  <section id="custom" class="active custom">
+    <%= form_for @invoice = Invoice.new do |f| %>
+      <fieldset>
+        <div class="extra add_logo">
+          Click here to add a custom logo
+        </div>
+        <%= f.bootstrap_text_field :from, :label => "payment to", :value => current_user.email %>
+        <%= f.bootstrap_text_field :description, :label => "note" %>
+        <div class="extra items">
+          Click here to itemize
+        </div>
+        <ul class="unstyled items" style="margin-top:1em">
+          <li>
+            <label>Item 1</label>
+            <%= fields_for :item do |field| %>
+              <div class="input">
+                <%= field.text_field :note, :class => "medium pull-left", :style => "margin-right:5px" %>
+                <div class="input-prepend">
+                  <span class="add-on">$</span>
+                  <%= field.number_field :amount, :class => "mini", :step => "any" %>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        </ul>
+        <div class="extra add_item">
+          Click here add more items 
+        </div>
+        <div class="clearfix total">
+          <%= f.label :amount, "total" %>
+          <div class="input">
+            <div class="input-prepend">
+              <span class="add-on active" style="color:black;font-weight:bold">$</span>
+              <%= f.number_field :amount, :class => "small", :step => "any" %>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    <% end %>
+  </section>
+</div>
