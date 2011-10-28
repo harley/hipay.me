@@ -1,7 +1,7 @@
 // Place all the styles related to the payslips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-section.custom {
+article.custom {
   div.extra {
     background-color: #b6e7fa;
     padding: 10px;
@@ -24,5 +24,9 @@ section.custom {
   }
   .items{
 
+  }
+  li {
+    height: 40px;
+    width: 100%;
   }
 }

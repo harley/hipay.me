@@ -6,6 +6,8 @@ class Invoice < ActiveRecord::Base
 
   belongs_to :user
   has_many :payments
+  has_many :items, :dependent => :destroy
+  accepts_nested_attributes_for :items, :reject_if => lambda {|a| a[:note].blank? }, :allow_destroy => true
 
   before_create :generate_token
   validates_uniqueness_of :token, :allow_blank => true

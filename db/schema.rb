@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027084517) do
+ActiveRecord::Schema.define(:version => 20111027113452) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(:version => 20111027084517) do
   end
 
   add_index "invoices", ["user_id"], :name => "index_invoices_on_user_id"
+
+  create_table "items", :force => true do |t|
+    t.integer  "invoice_id"
+    t.decimal  "amount",     :precision => 8, :scale => 2
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "payments", :force => true do |t|
     t.integer  "invoice_id"

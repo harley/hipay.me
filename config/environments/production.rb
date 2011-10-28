@@ -59,4 +59,10 @@ HipayMe::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.middleware.use ExceptionNotifier,
+    sender_address: 'hmm@hipay.me',
+    exception_recipients: 'exception@hipay.me',
+    ignore_exceptions: [] # ExceptionNotifier.default_ignore_exceptions # + [RuntimeError]
+    #ignore_crawlers: %w{Googlebot bingbot} 
 end

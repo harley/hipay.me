@@ -32,4 +32,11 @@ HipayMe::Application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.raise_delivery_errors = true
+
+  config.middleware.use ExceptionNotifier,
+    sender_address: 'hmm@hipay.me',
+    exception_recipients: 'exception@hipay.me',
+    ignore_exceptions: [] # ExceptionNotifier.default_ignore_exceptions # + [RuntimeError]
+    #ignore_crawlers: %w{Googlebot bingbot}
+  
 end

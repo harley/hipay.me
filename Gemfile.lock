@@ -63,6 +63,8 @@ GEM
       rack
     erubis (2.7.0)
     eventmachine (0.12.10)
+    exception_notification (2.5.2)
+      actionmailer (>= 3.0.4)
     excon (0.7.6)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -211,6 +213,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise
   dragonfly
+  exception_notification
   fog
   heroku
   hirb

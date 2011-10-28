@@ -8,7 +8,7 @@
 <div class="clear"></div>
 <%= custom_error_messages @invoice %>
 <div id="my-tab-content" class="tab-content">
-  <section id="express" class="active express">
+  <article id="express" class="active express">
     <%= form_for @invoice = Invoice.new do |f| %>
       <%= f.bootstrap_text_field :from, :label => "payment to", :value => current_user.email %>
       <%= f.bootstrap_text_field :description, :label => "description" %>
@@ -27,36 +27,32 @@
         </div>
       </div>
     <% end %>
-  </section>
+  </article>
 
-  <section id="custom" class="custom">
-    <%= form_for @invoice = Invoice.new, :html => { :multipart => true } do |f| %>
+  <article id="custom" class="custom">
+    <%= form_for @invoice, :html => { :multipart => true } do |f| %>
       <fieldset>
         <div class="extra add_logo">
           Click here to add a custom logo
         </div>
         <%= f.bootstrap_file_field :logo %>
         <%= f.bootstrap_text_field :from, :label => "payment to", :value => current_user.email %>
-        <%= f.bootstrap_text_field :description, :label => "note" %>
+        <%= f.bootstrap_text_field :description, :label => "description" %>
         <div class="extra items">
-          Click here to itemize
+          Click here to itemize.
         </div>
         <ul class="unstyled items" style="margin-top:1em">
+          <% 3.times{ @invoice.items.build }%>
+          <%= f.fields_for :items do |field| %>
           <li>
-            <label>Item 1</label>
-            <%= fields_for :item do |field| %>
-              <div class="input">
-                <%= field.text_field :note, :class => "medium pull-left", :style => "margin-right:5px" %>
-                <div class="input-prepend">
-                  <span class="add-on">$</span>
-                  <%= field.number_field :amount, :class => "mini", :step => "any" %>
-                </div>
-              </div>
-            <% end %>
+            <label>Item</label>
+            <%= render :partial => 'item_fields', :locals => {:field => field} %>
+            <div class="clear"></div>
           </li>
+          <% end %>
         </ul>
         <div class="extra add_item">
-          Click here add more items 
+          <%= add_item_link "Add item" %>
         </div>
         <div class="clearfix total">
           <%= f.label :amount, "total" %>
@@ -70,6 +66,20 @@
         <div style="text-align:center"><%= f.submit "Generate link", :class => "btn info large" %></div>
       </fieldset>
     <% end %>
-  </section>
+  </article>
 </div>
 
+<script type="text/javascript" language="javascript" charset="utf-8">
+//<![CDATA[
+$(function(){
+    hash = window.location.hash;
+    console.log("Hash: ", hash);
+    if (hash === "#custom") {
+        $("a[href=#custom]").click();
+    } else if (hash === "#express") {
+        $("a[href=#express]").click();
+    }
+})
+  
+//]]>
+</script>
