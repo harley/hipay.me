@@ -58,7 +58,7 @@ ul.dashboard_links a {
 
 div#error_explanation {
   background: #FAE5E3;
-  padding: 10px 0;
+  padding: 0;
   margin: -10px 0 1px;
 
   h2 {
@@ -102,3 +102,11 @@ iframe[id^="stripeFrame"] {
 }
 
 /* Make footer bottom: http://smithware.co.uk/main/wordpress/2011/09/01/bootstrap-css-framework-and-a-sticky-footer/ */
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: brown;
+  display: table;
+}
+
+

@@ -2,6 +2,9 @@
   <%= field.text_field :note, :class => "medium pull-left", :style => "margin-right:5px" %>
   <div class="input-prepend">
     <span class="add-on">$</span>
-    <%= field.number_field :amount, :class => "mini", :step => "any" %>
+    <%= field.number_field :amount, :class => "mini item_amount", :step => "any" %>
+    <%= link_to "#", :class => "remove_item" do %>
+      <%= image_tag "remove-16x16.png", :style => "vertical-align:middle" %>
+    <% end %>
   </div>
 </div>

@@ -17,4 +17,5 @@
 //= require invoices
 //= require payments
 //= require stripe_setup
+//= require payslips
 //= require_self
