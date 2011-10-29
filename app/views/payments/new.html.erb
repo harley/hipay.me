@@ -5,7 +5,7 @@
     <%= tag :meta, :name => "stripe-key", :content => @invoice.user.stripe_public_key %>
   <% end %>
 
-  <%= render :partial => 'invoice', :object => @invoice %>
+  <%= render @invoice %>
   <%= form_for @payment do |f| %>
     <fieldset class="payment">
       <% unless @invoice.user.live_mode? %>

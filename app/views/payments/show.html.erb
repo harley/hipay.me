@@ -12,4 +12,4 @@
   <%= f.submit 'Submit', :class => "btn primary" %>
 <% end %>
 
-<%= render :partial => 'invoice', :object => @invoice %>
+<%= render @payment.invoice %>

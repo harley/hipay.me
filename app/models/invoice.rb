@@ -17,6 +17,10 @@ class Invoice < ActiveRecord::Base
   validates_presence_of :user_id
   validates_numericality_of :amount, :greater_than => 0, :unless => :is_custom_mode
 
+  def logo_url
+    logo.try :url  
+  end
+
   def amount_in_cents
     (amount * 100).to_i
   end
