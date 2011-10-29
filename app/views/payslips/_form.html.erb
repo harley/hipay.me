@@ -40,6 +40,13 @@
             Click here to add a custom logo
           </div>
           -->
+          <div class="clearfix">
+            <% if @invoice.logo %>
+              <div class="input invoice_logo">
+                <%= image_tag @invoice.logo.url %>  
+              </div>
+            <% end %>
+          </div>
           <%= f.bootstrap_file_field :logo, :label => "logo" %>
           <%= f.bootstrap_text_field :payee, :label => "who are you?", :value => current_user.email %>
           <%= f.bootstrap_text_field :description, :label => "note to payer" %>

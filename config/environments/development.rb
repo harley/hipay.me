@@ -38,5 +38,7 @@ HipayMe::Application.configure do
   #  exception_recipients: 'exception@hipay.me',
   #  ignore_exceptions: [] # ExceptionNotifier.default_ignore_exceptions # + [RuntimeError]
     #ignore_crawlers: %w{Googlebot bingbot}
-  
 end
+
+DocRaptor.api_key "fKn4f6cqagwlrtOiRJ"
+

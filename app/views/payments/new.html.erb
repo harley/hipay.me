@@ -23,15 +23,15 @@
       <div class="clearfix">
         <%= label_tag :card_number %>
         <div class="input">
-          <%= text_field_tag :card_number %>
+          <%= text_field_tag :card_number, nil, :class => "span5" %>
         </div>
       </div>
 
       <div class="clearfix">
         <%= label_tag "Expiry date" %>
         <div class="input">
-          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class: "small"}%>
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "mini"}%>
+          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class: "span3"}%>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "span2"}%>
         </div>
       </div>
 

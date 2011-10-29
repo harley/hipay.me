@@ -2,10 +2,10 @@
   <% unless user_signed_in? %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
       <%= devise_error_messages! %>
-      <div class="row" style="width: 480px; margin:0 auto;margin-top:50px">
+      <div class="home_sign_up row" style="width: 480px; margin:0 auto;margin-top:50px">
         <%= f.email_field :email, :placeholder => "Email", :class => "span3", :style => "padding: 10px;margin: 5px" %>
         <%= f.password_field :password, :placeholder => "Password", :class => "span3", :style => "padding: 10px;margin: 5px", :autocomplete => 'off' %>
-        <%= f.submit "Sign up", :class => "btn success", :style => "padding: 10px;margin: 5px" %>
+        <%= f.submit "Sign up", :class => "btn primary", :style => "padding: 10px;margin: 5px" %>
       </div>
     <% end %>
   <% end %>

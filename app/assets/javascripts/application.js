@@ -4,6 +4,7 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
+//= require_self
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/bootstrap-modal.js
@@ -18,4 +19,6 @@
 //= require payments
 //= require stripe_setup
 //= require payslips
-//= require_self
+
+// make console.log work
+(function(b){function c(){}for(var d="assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","),a;a=d.pop();)b[a]=b[a]||c})(window.console=window.console||{});

@@ -1,0 +1,73 @@
+<h1 class="invoice_header">Invoice</h1>
+<div class="payer_header row">
+  <div class="span-two-thirds">
+    <em>Pay to:</em> <%= invoice.user %>
+  </div>
+  <div class="span-one-third logo">
+    <% if invoice.logo %>
+      <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="payee_header row">
+  <div class="payee span-two-thirds">
+    <h2><%= invoice.name %>&nbsp;</h2>
+  </div>
+  <div class="span-one-third">
+    <table class="invoice_summary">
+      <tbody>
+        <tr>
+          <th>Invoice #</th>
+          <td><%= invoice.id * 100 + 1 %></td> </tr>
+      
+        <tr>
+          <th>Date</th>
+          <td><%= invoice.updated_at.to_date %></td>
+        </tr>
+        <tr>
+          <th>Amount Due</th>
+          <td><%= number_to_currency invoice.amount %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if invoice.items.present? %>
+  <table class="items">
+    <thead>
+      <tr>
+        <th class="item_note">Item</th>
+        <th class="item_amount">Cost</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% invoice.items.each do |item| %>
+        <tr>
+          <td class="item_note"><%= item.note %></td>
+          <td class="item_amount"><%= number_to_currency item.amount %></td>
+        </tr>
+      <% end %>
+      <tr class="total">
+        <td class="item_total">Total</td>
+        <td class="item_total_amount"><%= number_to_currency invoice.amount %></td>
+      </tr>
+      <% if invoice.paid? %>
+      <tr class="total">
+        <td class="item_total total_paid">Amount Paid</td>
+        <td class="item_total_amount"><%= number_to_currency invoice.amount_paid %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <strong>Amount Paid: </strong>
+  <span><%= number_to_currency invoice.amount_paid %></span>
+<% end %>
+
+<div class="invoice_description">
+  <h3>Additional note</h3>
+  <%= simple_format invoice.description %>
+</div>

@@ -12,12 +12,15 @@ class Payment < ActiveRecord::Base
   def charge_and_save
     if valid?
       Stripe.api_key = invoice.user.stripe_private_key
+      puts "CHARGING STARTED: #{Stripe.api_key}"
 
       self.stripe_response = Stripe::Charge.create(:card => stripe_card_token, 
                                                    :amount => invoice.amount_in_cents, 
                                                    :currency => "usd", 
                                                    :description => description_for_stripe)
+      puts "CHARGING SAVED: #{stripe_response}"
       self.save!
+      y stripe_response
       true
     else
       false
