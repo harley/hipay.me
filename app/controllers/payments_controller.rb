@@ -32,34 +32,32 @@ class PaymentsController < ApplicationController
 
   def thankyou
     @payment = Payment.find params[:id]
-    respond_to do |format|
-      format.html
-      format.pdf { doc_raptor_send }
-    end
   end
 
   def invoice
-    if @payment = Payment.find_by_access_token(params[:access_token])
-      render :layout => "application.pdf" 
+    if @payment = Payment.find_by_access_token(params[:id])
+      respond_to do |format|
+        format.html { render :layout => false }
+        format.pdf { doc_raptor_send }
+      end
     else
+      flash[:error] = "Invalid link"
       redirect_to root_path
     end
   end
 
   def doc_raptor_send(options = { })
     default_options = { 
-      :name             => "payment",
+      :name             => action_name,
       :document_type    => request.format.to_sym,
       :test             => !Rails.env.production?,
     }
     options = default_options.merge(options)
-    #can't get css and work to work with document_content
-    #options[:document_content] ||= render_to_string
-    # this won't work on localhost
-    options[:document_url] ||= invoice_payment_url(@payment.access_token)
+    options[:document_content] ||= render_to_string(:file => "/payments/invoice.html.erb", :layout => false)
     ext = options[:document_type].to_sym
     
     response = DocRaptor.create(options)
+    y options[:document_content]
     if response.code == 200
       send_data response, :filename => "#{options[:name]}.#{ext}", :type => ext
     else

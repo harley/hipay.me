@@ -1,1 +1,153 @@
-<%= render @payment.invoice %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css" media="screen, print">
+      .clear {
+        clear: both;
+      }
+      td, th {
+        border: 1px solid #111;
+        padding: 5px;
+      }
+      table {
+        border-collapse: collapse;
+        padding: 5px;[]
+      }
+      table.invoice_summary {
+        float: right;
+      }
+      .container {
+        width: 600px;
+      }
+      .invoice_logo{
+        text-align: right;
+        word-break: break-all;
+      }
+      .invoice_logo img{
+        max-width: 200px;
+        vertical-align: bottom;
+      }
+      table {
+        margin-top: 20px;
+      }
+      td.item_total{
+        border: none;
+        font-weight: bold;
+      }
+      h1.invoice_header {
+        background-color: #111;
+        color: white;
+        text-align: center;
+      }
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+      .span-two-thirds {
+        width: 66%
+      }
+      .span-one-third{
+        width: 33%;
+      }
+      td.item_amount {
+        width: 50px;
+        text-align: right
+      }
+      td.item_total_amount{
+        text-align: right;
+      }
+      table.invoice_summary th {
+        background-color: #eee;
+        text-align: left;
+      }
+      table.invoice_summary td {
+        text-align: right;
+      }
+
+    </style>
+  </head>
+  <body>
+    <% invoice = @payment.invoice %>
+    <div class="container">
+      <h1 class="invoice_header">invoice</h1>
+      <div class="payer_header row">
+        <div class="span-two-thirds left">
+          <h3><em>pay to:</em> <%= invoice.user %></h3>
+        </div>
+        <div class="span-one-third invoice_logo right">
+          <% if invoice.logo %>
+            <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
+          <% else %>
+            <%= image_tag "hipaymelogotight.png" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+      <div class="payee_header row">
+        <div class="payee span-two-thirds left">
+          <h3><em>pay by:</em><%= invoice.name %>&nbsp;</h3>
+        </div>
+        <div class="span-one-third right">
+          <table class="invoice_summary">
+            <tbody>
+              <tr>
+                <th>invoice #</th>
+                <td><%= invoice.id * 100 + 1 %></td> </tr>
+
+              <tr>
+                <th>date</th>
+                <td><%= invoice.updated_at.to_date %></td>
+              </tr>
+              <tr>
+                <th>amount due</th>
+                <td><%= number_to_currency invoice.amount %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+      <% if invoice.items.present? %>
+        <table class="items">
+          <thead>
+            <tr>
+              <th class="item_note">item</th>
+              <th class="item_amount">cost</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% invoice.items.each do |item| %>
+              <tr>
+                <td class="item_note"><%= item.note %></td>
+                <td class="item_amount"><%= number_to_currency item.amount %></td>
+              </tr>
+            <% end %>
+            <tr class="total">
+              <td class="item_total">total</td>
+              <td class="item_total_amount"><%= number_to_currency invoice.amount %></td>
+            </tr>
+            <% if invoice.paid? %>
+              <tr class="total">
+                <td class="item_total total_paid">amount paid</td>
+                <td class="item_total_amount"><%= number_to_currency invoice.amount_paid %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <strong>amount paid: </strong>
+        <span><%= number_to_currency invoice.amount_paid %></span>
+      <% end %>
+
+      <div class="invoice_description">
+        <h3>additional note</h3>
+        <%= simple_format invoice.description %>
+      </div>
+    </div>
+  </body>
+</html>
