@@ -1,6 +1,5 @@
-<h2>Sign in</h2>
-
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-stacked"}) do |f| %>
+  <h2 class="page-header">Sign in</h2>
   <div class="clearfix">
     <%= f.label :email %>
     <div class="input">
@@ -16,13 +15,19 @@
   </div>
 
   <% if devise_mapping.rememberable? -%>
+  <div class="clearfix">
     <div class="inline-inputs">
       <%= f.check_box :remember_me %> 
       <span><%= f.label :remember_me %></span>
     </div>
+  </div>
   <% end -%>
 
-  <div><%= f.submit "Sign in", :class => "btn primary" %></div>
+  <div class="clearfix">
+    <div class="input">
+      <%= f.submit "Sign in", :class => "btn primary" %>
+    </div>
+  </div>
+  <%= render :partial => "devise/shared/links" %>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>

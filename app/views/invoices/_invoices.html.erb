@@ -30,7 +30,7 @@
         <% else %>
           <%= link_to 'Edit', edit_invoice_path(invoice), :title => "Sorry, you cannot edit a link through which at least one payment has occurred.", :rel => "popover", :class => "btn small tipsy_tooltip disabled", :id => "popover_#{i}" %>
         <% end %>
-        <%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete, class: "btn small danger" %>
+        <%= link_to 'Remove', invoice, confirm: 'Are you sure to remove this payslip?', method: :delete, class: "btn small" %>
       </td>
     </tr>
   <% end %>

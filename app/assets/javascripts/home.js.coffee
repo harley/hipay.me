@@ -10,6 +10,6 @@ $ ->
   wrapper = $("body div.wrapper")
   if window_height > body_height
     diff = window_height - body_height
-    wrapper.height wrapper.height + diff
+    wrapper.height wrapper.height() + diff
     console.log "increased wrapper by ", diff
   

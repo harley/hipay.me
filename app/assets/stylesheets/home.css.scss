@@ -113,4 +113,11 @@ iframe[id^="stripeFrame"] {
   display: table;
 }
 
+form#user_new.form-stacked {
+  width: 250px;
+  margin-left: 0;
 
+  .clearfix {
+    margin-bottom: 15px;
+  }
+}
