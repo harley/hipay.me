@@ -6,3 +6,27 @@
   max-width: 940px;
   max-height: 180px;
 }
+
+ul.payment_footnotes {
+  margin: 0;
+  font-size: 70%;
+  li {
+    display: inline;
+  }
+}
+
+table.active_payments {
+  th.total_collected {
+    width: 120px;
+  }
+
+  th.action {
+    width: 140px; 
+  }
+
+  td.action {
+    text-align: center;
+  }
+  
+  font-size: 90%;
+}

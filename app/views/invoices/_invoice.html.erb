@@ -34,33 +34,38 @@
   </div>
 </div>
 
-<table class="items">
-  <thead>
-    <tr>
-      <th class="item_note">Item</th>
-      <th class="item_amount">Cost</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% invoice.items.each do |item| %>
+<% if invoice.items.present? %>
+  <table class="items">
+    <thead>
       <tr>
-        <td class="item_note"><%= item.note %></td>
-        <td class="item_amount"><%= number_to_currency item.amount %></td>
+        <th class="item_note">Item</th>
+        <th class="item_amount">Cost</th>
       </tr>
-    <% end %>
-    <tr class="total">
-      <td class="item_total">Total</td>
-      <td class="item_total_amount"><%= number_to_currency invoice.amount %></td>
-    </tr>
-    <% if invoice.paid? %>
-    <tr class="total">
-      <td class="item_total total_paid">Amount Paid</td>
-      <td class="item_total_amount"><%= number_to_currency invoice.amount_paid %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% invoice.items.each do |item| %>
+        <tr>
+          <td class="item_note"><%= item.note %></td>
+          <td class="item_amount"><%= number_to_currency item.amount %></td>
+        </tr>
+      <% end %>
+      <tr class="total">
+        <td class="item_total">Total</td>
+        <td class="item_total_amount"><%= number_to_currency invoice.amount %></td>
+      </tr>
+      <% if invoice.paid? %>
+      <tr class="total">
+        <td class="item_total total_paid">Amount Paid</td>
+        <td class="item_total_amount"><%= number_to_currency invoice.amount_paid %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <strong>Amount Paid: </strong>
+  <span><%= number_to_currency invoice.amount_paid %></span>
+<% end %>
 
 <div class="invoice_description">
   <h3>Additional note</h3>

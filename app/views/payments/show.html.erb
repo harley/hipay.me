@@ -1,15 +1,20 @@
-<h3>
-  Thank you! Your credit card ending <span class="last4"><%= @payment.last4 %></span> has been charged <%= span_for_currency @payment.invoice.amount %>
-</h3>
+<div class="receipt_form alert-message block-message success fade in" data-alert="alert">
+  <%= link_to "#", :class => "close" do %>
+    &times;
+  <% end %>
+  <h3>
+    Credit card ending <span class="last4">#<%= @payment.last4 %></span> was charged <%= span_for_currency @payment.invoice.amount %>
+  </h3>
 
-<%= form_for @payment, :html => {:class => "form-stacked"} do |f| %>
-  <div class="clearfix">
-    <%= f.label :email, "Enter your email below to get a copy of the receipt" %>
-    <div class="input">
-      <%= f.text_field :email %>
+  <%= form_for @payment, :html => {:class => "form-stacked"} do |f| %>
+    <div class="clearfix">
+      <%= f.label :email, "Enter your email below to get a copy of the receipt" %>
+      <div class="input">
+        <%= f.text_field :email, :class => "span7" %>
+      </div>
     </div>
-  </div>
-  <%= f.submit 'Submit', :class => "btn primary" %>
-<% end %>
+    <%= f.submit 'Submit', :class => "btn primary" %>
+  <% end %>
+</div>
 
 <%= render @payment.invoice %>
