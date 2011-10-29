@@ -1,0 +1,23 @@
+<% if invoice.name %>
+  <h1>Hi <%= invoice.name %>,</h1>
+<% end %>
+
+<h2>
+  You are about to pay <%= number_to_currency invoice.amount %> to <%= invoice.user %>.
+</h2>
+
+<div>Note from <%= invoice.user %>:<br />
+  <%= simple_format invoice.description %>
+</div>
+
+<div>
+  Items
+  <% if invoice.items.present? %>
+    <ul>
+      <% invoice.items.each do |item| %>
+        <li><%= item.note %> (<%= number_to_currency item.amount %>)</li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+

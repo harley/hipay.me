@@ -7,14 +7,14 @@
     <div class="span6">
     <fieldset>
       <div class="clearfix">
-        <%= label_tag 'stripe_live_public_key' %>
+        <%= label_tag 'stripe_live_public_key', "Stripe publishable live key" %>
         <div class="input">
           <%= text_field_tag 'stripe[live][public_key]', @user.live_stripe_public_key %>
         </div>
       </div>
 
        <div class="clearfix">
-        <%= label_tag 'stripe_live_private_key' %>
+        <%= label_tag 'stripe_live_private_key', "Stripe secret live key" %>
         <div class="input">
           <%= text_field_tag 'stripe[live][private_key]', @user.live_stripe_private_key %>
         </div>
@@ -23,19 +23,22 @@
       <p>
       </p>
       <div>
+        <% if @user.using_global_test_keys? %>
+          <p>Your account is currently linked with a default Stripe test account.</p>
+        <% end %>
         <span id="toggle-extra-view" style="cursor:pointer;" class="label info">
           Add your Stripe test keys as well
         </span>
-        <div style="display:none">
+        <div style="<%= @user.using_global_test_keys? ? 'display:none' : nil %>">
           <div class="clearfix">
-            <%= label_tag 'stripe_test_public_key' %>
+            <%= label_tag 'stripe_test_public_key', "Stripe publishable test key" %>
             <div class="input">
               <%= text_field_tag 'stripe[test][public_key]', @user.test_stripe_public_key %>
             </div>
           </div>
 
            <div class="clearfix">
-            <%= label_tag 'stripe_test_private_key' %>
+            <%= label_tag 'stripe_test_private_key', "Stripe secret test key" %>
             <div class="input">
               <%= text_field_tag 'stripe[test][private_key]', @user.test_stripe_private_key %>
             </div>
@@ -50,7 +53,7 @@
       <%= link_to "Go back to Demo mode", confirm_demo_path, :class => "btn large" %>
     <% else %>
       <% if @user.using_global_test_keys? %>
-        <p class="medium">Your account is currently linked with a default Stripe test account. You can <%= link_to "sign in on Stripe", "https://manage.stripe.com/login" %> with the following credentials to check out the test charges you made so far. </p>
+        <p class="medium">You can <%= link_to "sign in on Stripe", "https://manage.stripe.com/login" %> with the following credentials to check out the test charges you made so far. </p>
         <p>
           <strong style="width:100px;display:inline-block;">Email</strong> stripe_test@hipay.me<br />
           <strong style="width:100px;display:inline-block">Password</strong> hipayme
