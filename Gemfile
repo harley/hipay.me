@@ -26,6 +26,7 @@ gem 'bootstrap-form'
 gem 'dragonfly'
 gem 'fog'
 gem 'exception_notification'
+gem 'doc_raptor'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
