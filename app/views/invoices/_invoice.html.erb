@@ -3,6 +3,17 @@
   <div class="span-two-thirds">
     <em>Pay to:</em> <%= invoice.user %>
   </div>
+  <div class="span-one-third logo">
+    <% if invoice.logo %>
+      <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="payee_header row">
+  <div class="payee span-two-thirds">
+    <h2><%= invoice.name %>&nbsp;</h2>
+  </div>
   <div class="span-one-third">
     <table class="invoice_summary">
       <tbody>
@@ -20,17 +31,6 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
-
-<div class="payee_header row">
-  <div class="span8">
-    <h2><%= invoice.name %></h2>
-  </div>
-  <div class="span8">
-    <% if invoice.logo %>
-      <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
-    <% end %>
   </div>
 </div>
 

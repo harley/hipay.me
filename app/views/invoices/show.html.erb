@@ -5,6 +5,7 @@
   }
 </style>
 
+<div class="show_payment_link">
 <% if @invoice.logo %>
   <div class="invoice_logo">
     <%= image_tag @invoice.logo_url %>  
@@ -23,6 +24,7 @@
   Send this link to your payer.  Click <%= link_to "here", link %> to preview what your payer would see.
 </p>
 
+</div>
 <%# TODO put some buttons here %>
 
 <script type="text/javascript" language="javascript" charset="utf-8">

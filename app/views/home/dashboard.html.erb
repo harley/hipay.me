@@ -1,12 +1,12 @@
 <%= content_for :sidebar do %>
   <ul class="unstyled dashboard_links">
-    <li><%= link_to "New Invoice", new_invoice_path %></li>
+    <li><%= link_to "New Payslip", new_invoice_path %></li>
     <li><%= link_to "Demo/Live mode", go_live_path %></li>
   </ul>
 <% end %>
 
 <%= content_for :content do %>
-  <h1>Active payments links</h1>
+  <h1>Active payslips</h1>
   <%= render :partial => 'invoices/invoices', :object => @invoices %>
 
   <h1>Transaction history</h1>

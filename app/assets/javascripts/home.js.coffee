@@ -4,3 +4,12 @@
 
 $ ->
   $(".tipsy_tooltip").twipsy()
+  # move footer to bottom if page is too short
+  body_height = $("body").height()
+  window_height = $(window).height()
+  wrapper = $("body div.wrapper")
+  if window_height > body_height
+    diff = window_height - body_height
+    wrapper.height wrapper.height + diff
+    console.log "increased wrapper by ", diff
+  

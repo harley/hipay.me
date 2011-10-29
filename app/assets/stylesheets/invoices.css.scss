@@ -30,3 +30,14 @@ table.active_payments {
   
   font-size: 90%;
 }
+
+div.payer_header {
+  div.logo {
+    text-align: right;
+    img.invoice_logo {
+      max-width: 220px;
+      vertical-align: bottom;
+    } 
+  }
+  margin-bottom: 21px;
+}

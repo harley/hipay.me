@@ -8,31 +8,30 @@
       <th class="action">Action</th>
     </tr>
   </thead>
+  <tbody>
   <% invoices.each_with_index do |invoice, i| %>
-    <tbody>
-      <tr>
-        <td class="link"><%= invoice_token_link invoice.token %></td>
-        <td class="amount"><%= span_for_currency invoice.amount %></td>
-        <td class="total_collected">
-          <%= span_for_currency invoice.total_collected %>
-          <ul class="unstyled payment_footnotes">
-            <% invoice.payments.each do |payment| %>
-              <li>
-                <%= link_to (number_to_currency payment.amount), payment %>
-              </li>
-            <% end %>
-          </ul>
-        </td>
-        <td class="description"><%= invoice.description %></td>
-        <td class="action">
-          <% if invoice.not_yet_used? %>
-            <%= link_to 'Edit', edit_invoice_path(invoice), :class => "btn small" %> 
-          <% else %>
-            <%= link_to 'Edit', edit_invoice_path(invoice), :title => "Sorry, you cannot edit a link through which at least one payment has occurred.", :rel => "popover", :class => "btn small tipsy_tooltip disabled", :id => "popover_#{i}" %>
+    <tr>
+      <td class="link"><%= invoice_token_link invoice.token %></td>
+      <td class="amount"><%= span_for_currency invoice.amount %></td>
+      <td class="total_collected">
+        <%= span_for_currency invoice.total_collected %>
+        <ul class="unstyled payment_footnotes">
+          <% invoice.payments.each do |payment| %>
+            <li>
+              <%= link_to (number_to_currency payment.amount), payment %>
+            </li>
           <% end %>
-          <%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete, class: "btn small" %>
-        </td>
-      </tr>
-    </tbody>
+        </ul>
+      </td>
+      <td class="description"><%= invoice.description %></td>
+      <td class="action">
+        <% if invoice.not_yet_used? %>
+          <%= link_to 'Edit', edit_invoice_path(invoice), :class => "btn small" %> 
+        <% else %>
+          <%= link_to 'Edit', edit_invoice_path(invoice), :title => "Sorry, you cannot edit a link through which at least one payment has occurred.", :rel => "popover", :class => "btn small tipsy_tooltip disabled", :id => "popover_#{i}" %>
+        <% end %>
+        <%= link_to 'Remove', invoice, confirm: 'Are you sure?', method: :delete, class: "btn small danger" %>
+      </td>
+    </tr>
   <% end %>
 </table>
