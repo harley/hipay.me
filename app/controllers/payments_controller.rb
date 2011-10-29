@@ -38,6 +38,14 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def invoice
+    if @payment = Payment.find_by_access_token(params[:access_token])
+      render :layout => "application.pdf" 
+    else
+      redirect_to root_path
+    end
+  end
+
   def doc_raptor_send(options = { })
     default_options = { 
       :name             => "payment",
@@ -45,7 +53,10 @@ class PaymentsController < ApplicationController
       :test             => !Rails.env.production?,
     }
     options = default_options.merge(options)
-    options[:document_content] ||= render_to_string
+    #can't get css and work to work with document_content
+    #options[:document_content] ||= render_to_string
+    # this won't work on localhost
+    options[:document_url] ||= invoice_payment_url(@payment.access_token)
     ext = options[:document_type].to_sym
     
     response = DocRaptor.create(options)

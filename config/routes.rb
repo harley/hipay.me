@@ -14,6 +14,7 @@ HipayMe::Application.routes.draw do
   resources :payments, :only => [:create, :show, :update] do
     member do
       get 'thankyou'
+      get 'invoice'
     end
   end
   resources :payslips, :as => "invoices"

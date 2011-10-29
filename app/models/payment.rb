@@ -9,6 +9,13 @@ class Payment < ActiveRecord::Base
   before_create :parse_stripe_response
   delegate :token, :to => :invoice
 
+  def access_token
+    unless read_attribute(:access_token)
+      self.update_attribute :access_token, ActiveSupport::SecureRandom.hex(5)  
+    end
+    read_attribute(:access_token)
+  end
+
   def charge_and_save
     if valid?
       Stripe.api_key = invoice.user.stripe_private_key
