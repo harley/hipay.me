@@ -5,6 +5,12 @@ class PayslipsController < InvoicesController
   end
 
   def edit
-    render 'new'
+    @invoice = Invoice.find params[:id]
+    params[:invoice] ||= {}
+    if @invoice.express?
+      params[:invoice][:mode] = "express"
+    else
+      params[:invoice][:mode] = "custom"
+    end
   end
 end

@@ -1,0 +1,102 @@
+<div id="payslip-content-tabs">
+  <% if @invoice.new_record? %>
+  <ul class="tabs" data-tabs="tabs">
+    <li class="active"><%= link_to "express", "#express" %></li>
+    <li><%= link_to "custom", "#custom" %></li>
+  </ul>
+  <% end %>
+
+  <div class="clear"></div>
+  <%= custom_error_messages @invoice %>
+  <div class="tab-content">
+    <article id="express" class="express <%= 'active' unless @invoice.custom? %>"> 
+      <%= form_for @invoice do |f| %>
+        <%= f.hidden_field :mode, :value => "express" %>
+        <%= f.bootstrap_text_field :payee, :label => "who are you?", :value => current_user.email %>
+        <%= f.bootstrap_text_field :description, :label => "note to payer" %>
+        <div class="clearfix">
+          <%= f.label :amount, "total" %>
+          <div class="input">
+            <div class="input-prepend">
+              <span class="add-on active" style="color:black;font-weight:bold">$</span>
+              <%= f.number_field :amount, :class => "mini", :step => "any" %>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="input">
+            <%= f.submit "Generate link", :class => "btn primary large" %>
+          </div>
+        </div>
+      <% end %>
+    </article>
+
+    <article id="custom" class="custom <%= 'active' if @invoice.custom? %>">
+      <%= form_for @invoice, :html => { :multipart => true } do |f| %>
+        <%= f.hidden_field :mode, :value => "custom" %>
+        <fieldset>
+        <!--
+          <div class="extra add_logo">
+            Click here to add a custom logo
+          </div>
+          -->
+          <%= f.bootstrap_file_field :logo, :label => "logo" %>
+          <%= f.bootstrap_text_field :payee, :label => "who are you?", :value => current_user.email %>
+          <%= f.bootstrap_text_field :description, :label => "note to payer" %>
+          <div class="extra items">
+            Add your items
+          </div>
+          <ul class="unstyled invoice_items" style="margin-top:1em;margin-bottom:0">
+            <% @invoice.items.build if @invoice.items.size.zero? %>
+            <%= f.fields_for :items do |field| %>
+            <li class="invoice_item">
+              <label>Item</label>
+              <%= render :partial => 'item_fields', :locals => {:field => field} %>
+              <div class="clear"></div>
+            </li>
+            <% end %>
+          </ul>
+          <div class="clearfix">
+            <div class="input">
+            <%= add_item_link do %>
+              <span class="label success">
+                <%= image_tag "plus-16x16.png", :style => "vertical-align:middle" %>
+                Add item
+              </span>
+            <% end %>
+            </div>
+          </div>
+          <div class="clearfix total">
+            <%= f.label :amount, "total" %>
+            <div class="input">
+              <div class="input-prepend">
+                <span class="add-on">$</span>
+                <%= f.number_field :amount, :class => "small", :step => "any", :id => "computed_total_amount", :disabled => true %>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <%= f.submit @invoice.new_record? ? "Generate link" : "Update link", :class => "btn info large" %>
+          </div>
+        </fieldset>
+      <% end %>
+    </article>
+  </div>
+</div>
+<script type="text/javascript" language="javascript" charset="utf-8">
+//<![CDATA[
+$(function(){
+    <% if params[:invoice] && params[:invoice][:mode].present? %>
+         $("a[href=#<%= params[:invoice][:mode] %>]").click();
+    <% else %>
+        hash = window.location.hash;
+        if (hash === "#custom") {
+            $("a[href=#custom]").click();
+        } else if (hash === "#express") {
+            $("a[href=#express]").click();
+        }
+    <% end %>
+})
+  
+//]]>
+</script>

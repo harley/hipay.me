@@ -17,6 +17,14 @@ class Invoice < ActiveRecord::Base
   validates_presence_of :user_id
   validates_numericality_of :amount, :greater_than => 0, :unless => :is_custom_mode
 
+  def express?
+    id && items.size.zero? 
+  end
+
+  def custom?
+    id && items.size > 0 
+  end
+  
   def logo_url
     logo.try :url  
   end

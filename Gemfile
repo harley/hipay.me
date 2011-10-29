@@ -54,4 +54,5 @@ group :development do
   gem 'hirb'
   gem 'heroku'
   gem 'thin'
+  gem 'rails-dev-tweaks', '~> 0.5.1'
 end
