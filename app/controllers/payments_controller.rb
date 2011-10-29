@@ -33,9 +33,7 @@ class PaymentsController < ApplicationController
   def thankyou
     @payment = Payment.find params[:id]
     respond_to do |format|
-      format.html do
-        render :layout => "app2"
-      end
+      format.html
       format.pdf { doc_raptor_send }
     end
   end
