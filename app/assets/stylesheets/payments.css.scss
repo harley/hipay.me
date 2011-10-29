@@ -1,3 +1,57 @@
 // Place all the styles related to the payments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1.invoice_header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+table.invoice_summary {
+  th {
+    background-color: #eee;
+    font-weight: normal;
+  }
+  td {
+    text-align: right;
+    padding: 10px;
+  }
+}
+
+table.items{
+  border-collapse: collapse;
+  border: none;
+
+  th {
+    background-color: #eee;
+  }
+  th.item_amount {
+    min-width: 60px;
+    width:100px;
+  }
+
+  th.item_note {
+    min-width: 100px;
+  }
+  th, td {
+    border: 1px solid #111;
+    padding: 15px;
+  }
+  .item_amount {
+    text-align: right;
+  }
+  tr.total, td.item_total {
+    border: none;
+  }
+  td.item_total, td.item_total_amount {
+    text-align: right;
+    font-weight: bold;
+    font-size: 120%;
+  }
+}
+
+fieldset.payment {
+  width: 500px;
+  margin: 6em auto;
+}

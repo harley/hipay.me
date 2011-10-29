@@ -7,7 +7,6 @@ class Payment < ActiveRecord::Base
   serialize :stripe_response, Stripe::Charge
 
   before_create :parse_stripe_response
-  delegate :amount, :to => :invoice
   delegate :token, :to => :invoice
 
   def charge_and_save
@@ -19,6 +18,9 @@ class Payment < ActiveRecord::Base
                                                    :currency => "usd", 
                                                    :description => description_for_stripe)
       self.save!
+      true
+    else
+      false
     end
   rescue Stripe::InvalidRequestError => e
     logger.error "Stripe error while creating customer: #{e.message}"

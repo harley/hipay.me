@@ -3,4 +3,8 @@ class PayslipsController < InvoicesController
   def new
     @invoice = current_user.invoices.build
   end
+
+  def edit
+    render 'new'
+  end
 end

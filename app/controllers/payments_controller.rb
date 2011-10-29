@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
   def new
     if @invoice = Invoice.find_by_token(params[:invoice_token])
       @payment = @invoice.payments.build
+      @no_banner = true
     end
   end
 

@@ -50,17 +50,21 @@
       </div>
     </div>
       
-    <header class="jumbotron masthead" id="overview">
-    <div class="inner">
-      <div class="container">
-        <h1>Say goodbye to your paper invoices</h1>
-        <p class="lead">
-          Accept credit card payments in minutes!
-        </p>
-        <%= yield(:header) if content_for?(:header) %>
+    <% unless @no_banner %>
+      <header class="jumbotron masthead" id="overview">
+      <div class="inner">
+        <div class="container">
+          <h1>Say goodbye to your paper invoices</h1>
+          <p class="lead">
+            Accept credit card payments in minutes!
+          </p>
+          <%= yield(:header) if content_for?(:header) %>
+        </div>
       </div>
-    </div>
-    </header>
+      </header>
+    <% else %>
+      <%= yield(:header) if content_for?(:header) %>
+    <% end %>
 
     <div class="container">
       <% flash.each do |name, msg| %>

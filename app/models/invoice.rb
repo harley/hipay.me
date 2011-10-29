@@ -37,6 +37,14 @@ class Invoice < ActiveRecord::Base
     end  
   end
 
+  def amount_paid
+    payments.sum(:amount)
+  end
+
+  def paid?
+    amount_paid >= amount
+  end
+
   private
   def generate_token
     self.token = Invoice.alphanumeric_random 5

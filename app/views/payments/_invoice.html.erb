@@ -1,23 +1,68 @@
-<% if invoice.name %>
-  <h1>Hi <%= invoice.name %>,</h1>
-<% end %>
+<h1 class="invoice_header">Invoice</h1>
+<div class="payer_header row">
+  <div class="span-two-thirds">
+    <em>Pay to:</em> <%= invoice.user %>
+  </div>
+  <div class="span-one-third">
+    <table class="invoice_summary">
+      <tbody>
+        <tr>
+          <th>Invoice #</th>
+          <td><%= invoice.id * 100 + 1 %></td> </tr>
+      
+        <tr>
+          <th>Date</th>
+          <td><%= invoice.updated_at.to_date %></td>
+        </tr>
+        <tr>
+          <th>Amount Due</th>
+          <td><%= number_to_currency invoice.amount %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<h2>
-  You are about to pay <%= number_to_currency invoice.amount %> to <%= invoice.user %>.
-</h2>
+<div class="payee_header row">
+  <div class="span8">
+    <h2><%= invoice.name %></h2>
+  </div>
+  <div class="span8">
+    <% if invoice.logo %>
+      <%= image_tag "invoice.logo.url", :class => "invoice_logo" %>
+    <% end %>
+  </div>
+</div>
 
-<div>Note from <%= invoice.user %>:<br />
+<table class="items">
+  <thead>
+    <tr>
+      <th class="item_note">Item</th>
+      <th class="item_amount">Cost</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% invoice.items.each do |item| %>
+      <tr>
+        <td class="item_note"><%= item.note %></td>
+        <td class="item_amount"><%= number_to_currency item.amount %></td>
+      </tr>
+    <% end %>
+    <tr class="total">
+      <td class="item_total">Total</td>
+      <td class="item_total_amount"><%= number_to_currency invoice.amount %></td>
+    </tr>
+    <% if invoice.paid? %>
+    <tr class="total">
+      <td class="item_total total_paid">Amount Paid</td>
+      <td class="item_total_amount"><%= number_to_currency invoice.amount_paid %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="invoice_description">
+  <h3>Additional note</h3>
   <%= simple_format invoice.description %>
 </div>
-
-<div>
-  Items
-  <% if invoice.items.present? %>
-    <ul>
-      <% invoice.items.each do |item| %>
-        <li><%= item.note %> (<%= number_to_currency item.amount %>)</li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
-
