@@ -67,10 +67,14 @@ div#error_explanation {
 
   h2 {
     color: brown;
+    font-size: 18px;
+    margin: 15px;
+    margin-bottom: 0;
   }
   
   ul {
     padding-left: 20px;
+    padding-bottom: 15px;
   }
 }
 
@@ -114,7 +118,6 @@ iframe[id^="stripeFrame"] {
 }
 
 form#user_new.form-stacked {
-  width: 250px;
   margin-left: 0;
 
   .clearfix {
