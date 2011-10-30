@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111029224513) do
+ActiveRecord::Schema.define(:version => 20111030001846) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20111029224513) do
     t.datetime "updated_at"
     t.decimal  "amount",          :precision => 8, :scale => 2
     t.string   "access_token"
+    t.string   "payer_name"
   end
 
   add_index "payments", ["invoice_id"], :name => "index_payments_on_invoice_id"

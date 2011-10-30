@@ -9,6 +9,10 @@ class Payment < ActiveRecord::Base
   before_create :parse_stripe_response
   delegate :token, :to => :invoice
 
+  def to_param
+    access_token  
+  end
+
   def access_token
     unless read_attribute(:access_token)
       self.update_attribute :access_token, ActiveSupport::SecureRandom.hex(5)  

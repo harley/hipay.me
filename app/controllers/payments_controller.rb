@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   def new
     if @invoice = Invoice.find_by_token(params[:invoice_token])
-      @payment = @invoice.payments.build
+      @payment = @invoice.payments.build :payer_name => @invoice.name
       @no_banner = true
     end
   end
@@ -18,11 +18,11 @@ class PaymentsController < ApplicationController
   end
 
   def show
-    @payment = Payment.find params[:id]
+    @payment = Payment.find_by_access_token! params[:id]
   end
 
   def update
-    @payment = Payment.find params[:id]
+    @payment = Payment.find_by_access_token! params[:id]
     if params[:payment][:email]
       @payment.update_attribute :email, params[:payment][:email]
       @payment.send_receipt
@@ -31,7 +31,7 @@ class PaymentsController < ApplicationController
   end
 
   def thankyou
-    @payment = Payment.find params[:id]
+    @payment = Payment.find_by_access_token! params[:id]
   end
 
   def invoice

@@ -1,7 +1,10 @@
 <h1 class="invoice_header">Invoice</h1>
 <div class="payer_header row">
   <div class="span-two-thirds">
-    <em>Pay to:</em> <%= invoice.user %>
+    <h2>
+      <em>Pay to:</em> 
+      <%= invoice.user %>
+    </h2>
   </div>
   <div class="span-one-third logo">
     <% if invoice.logo %>
@@ -12,7 +15,10 @@
 
 <div class="payee_header row">
   <div class="payee span-two-thirds">
-    <h2><%= invoice.name %>&nbsp;</h2>
+    <h2>
+      <em>Pay by:</em>
+      <%= invoice.name %>&nbsp;
+    </h2>
   </div>
   <div class="span-one-third">
     <table class="invoice_summary">

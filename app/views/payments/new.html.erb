@@ -5,7 +5,6 @@
     <%= tag :meta, :name => "stripe-key", :content => @invoice.user.stripe_public_key %>
   <% end %>
 
-  <%= render @invoice %>
   <%= form_for @payment do |f| %>
     <fieldset class="payment">
       <% unless @invoice.user.live_mode? %>
@@ -18,6 +17,13 @@
         <span id="stripe_error">
           <noscript style="display:block !important">JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
         </span>
+      </div>
+
+      <div class="clearfix">
+        <%= f.label :payer_name, "Name (optional)" %>
+        <div class="input">
+          <%= f.text_field :payer_name %>
+        </div>
       </div>
 
       <div class="clearfix">
@@ -52,3 +58,5 @@
     </fieldset>
   <% end %>
 <% end %>
+
+<%= render @invoice %>
