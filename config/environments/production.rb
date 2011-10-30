@@ -65,4 +65,6 @@ HipayMe::Application.configure do
     exception_recipients: 'exception@hipay.me',
     ignore_exceptions: [] # ExceptionNotifier.default_ignore_exceptions # + [RuntimeError]
     #ignore_crawlers: %w{Googlebot bingbot} 
+
+  config.action_mailer.default_url_options = { :host => 'http://hipay.me' }
 end
