@@ -88,7 +88,7 @@
 
       <div class="payee_header row">
         <div class="payee span-two-thirds left">
-          <h3><em>paid by:</em><%= @payment.payer_name %>&nbsp;</h3>
+          <h3><em>paid by:</em><%= @payment.try(:payer_name) || invoice.name %>&nbsp;</h3>
         </div>
         <div class="span-one-third right">
           <table class="invoice_summary">

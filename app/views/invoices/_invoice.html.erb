@@ -17,7 +17,7 @@
   <div class="payee span-two-thirds">
     <h3>
       <em>Paid by:</em>
-      <%= invoice.name %>&nbsp;
+      <%= @payment.try(:payer_name) || invoice.name %>&nbsp;
     </h3>
   </div>
   <div class="span-one-third">
