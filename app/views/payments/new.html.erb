@@ -9,7 +9,13 @@
     <fieldset class="payment">
       <% unless @invoice.user.live_mode? %>
         <p class="warning" style="color:brown;">
-          Please note you are in <strong>Demo</strong> mode. <br/>The only credit card number that works is <strong>'4242424242424242'</strong>
+          Please note you are in 
+          <%= link_to go_live_url do %> 
+            <span class="label warning">Demo</span>
+          <% end %>
+          mode. 
+          <small>(click to change)</small>
+          <br/>The only credit card number that works is <strong>'4242424242424242'</strong>
         </p>
       <% end %>
 
