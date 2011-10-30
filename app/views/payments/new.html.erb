@@ -7,6 +7,9 @@
 
   <%= form_for @payment do |f| %>
     <fieldset class="payment">
+      <p>
+        Hello<%= " #{@payment.invoice.name}" if @payment.invoice.name.present? %>, you're about to pay <strong><%= number_to_currency @payment.invoice.amount %></strong>. Please refer to the more complete invoice below.
+      </p>
       <% unless @invoice.user.live_mode? %>
         <p class="warning" style="color:brown;">
           Please note you are in 
