@@ -14,7 +14,7 @@
     <% @payments.each do |payment| %>
       <li>
         You were paid <%= span_for_currency payment.amount %> from link <%= invoice_token_link payment.token %> with credit card ending in <span class="last4"><%= payment.last4 %></span>
-        <span class="timestamp"><%= time_ago_in_words(payment.created_at) %></span>
+        <span class="timestamp"><%= time_ago_in_words(payment.created_at) %> ago</span>
       </li>
     <% end %>
   </ul>

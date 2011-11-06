@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-      
+
     <% unless @no_banner %>
       <header class="jumbotron masthead" id="overview">
       <div class="inner">
@@ -91,9 +91,10 @@
             <%= content_for?(:content) ? yield(:content) : yield %>
         <% end %>
         <div class="clear"></div>
+        <b style="color:white;line-height:1px;font-size:1px">.</b>
       </div>
 
-      <div class="footer_push"> </div>
+      <div class="footer_push"></div>
     </div>
     <footer class="footer">
     <div class="container">
