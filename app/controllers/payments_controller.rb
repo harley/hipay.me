@@ -41,7 +41,12 @@ class PaymentsController < ApplicationController
     if @payment = Payment.find_by_access_token(params[:id])
       respond_to do |format|
         format.html { render :layout => false }
-        format.pdf { doc_raptor_send }
+        format.pdf do
+          # showing image is throwing timeout error because of docraptor <-> heroku
+          # hence disabling as default, but overridable with params[:i]
+          @hide_image = true unless params[:i]
+          doc_raptor_send
+        end
       end
     else
       flash[:error] = "Invalid link"
@@ -60,7 +65,7 @@ class PaymentsController < ApplicationController
     ext = options[:document_type].to_sym
 
     response = DocRaptor.create(options)
-    y options[:document_content]
+    #y options[:document_content]
     if response.code == 200
       send_data response, :filename => "#{options[:name]}.#{ext}", :type => ext
     else

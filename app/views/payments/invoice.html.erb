@@ -77,7 +77,7 @@
           <h3><em>pay to:</em> <%= invoice.user %></h3>
         </div>
         <div class="span-one-third invoice_logo right">
-          <% if invoice.logo %>
+          <% if !@hide_image and invoice.logo %>
             <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
           <% end %>
         </div>
