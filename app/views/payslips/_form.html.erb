@@ -9,7 +9,7 @@
   <div class="clear"></div>
   <%= custom_error_messages @invoice %>
   <div class="tab-content">
-    <article id="express" class="express <%= 'active' unless @invoice.custom? %>"> 
+    <article id="express" class="express <%= 'active' unless @invoice.custom? %>">
       <%= form_for @invoice do |f| %>
         <%= f.hidden_field :mode, :value => "express" %>
         <%= f.bootstrap_text_field :payee, :label => "who are you?", :value => current_user.email %>
@@ -43,7 +43,7 @@
           <div class="clearfix">
             <% if @invoice.logo %>
               <div class="input invoice_logo">
-                <%= image_tag @invoice.logo.url %>  
+                <%= image_tag @invoice.logo.url %>
               </div>
             <% end %>
           </div>
@@ -90,6 +90,9 @@
     </article>
   </div>
 </div>
+<p style="color:white">
+  .
+</p>
 <script type="text/javascript" language="javascript" charset="utf-8">
 //<![CDATA[
 $(function(){
@@ -104,6 +107,6 @@ $(function(){
         }
     <% end %>
 })
-  
+
 //]]>
 </script>
