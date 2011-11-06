@@ -80,7 +80,7 @@
           <% if invoice.logo %>
             <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
           <% else %>
-            <%= image_tag "hipaymelogotight.png" %>
+            <%= image_tag(asset_path "hipaymelogotight.png") %>
           <% end %>
         </div>
       </div>
