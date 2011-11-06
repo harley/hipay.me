@@ -3,6 +3,9 @@ class PaymentsController < ApplicationController
     if @invoice = Invoice.find_by_token(params[:invoice_token])
       @payment = @invoice.payments.build :payer_name => @invoice.name
       @no_banner = true
+    else
+      flash[:error] = "Invalid link."
+      redirect_to root_url
     end
   end
 
@@ -47,7 +50,7 @@ class PaymentsController < ApplicationController
   end
 
   def doc_raptor_send(options = { })
-    default_options = { 
+    default_options = {
       :name             => action_name,
       :document_type    => request.format.to_sym,
       :test             => !Rails.env.production?,
@@ -55,7 +58,7 @@ class PaymentsController < ApplicationController
     options = default_options.merge(options)
     options[:document_content] ||= render_to_string(:file => "/payments/invoice.html.erb", :layout => false)
     ext = options[:document_type].to_sym
-    
+
     response = DocRaptor.create(options)
     y options[:document_content]
     if response.code == 200
