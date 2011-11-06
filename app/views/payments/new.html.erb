@@ -12,14 +12,17 @@
       </p>
       <% unless @invoice.user.live_mode? %>
         <p class="warning" style="color:brown;">
-          Please note you are in 
-          <%= link_to go_live_url do %> 
+          Please note this payment link was created in
             <span class="label warning">Demo</span>
+          mode
+          <% if current_user and current_user == @invoice.user %>
+            <%= link_to go_live_url do %>
+              <small>(change?)</small>
+            <% end %>
           <% end %>
-          mode. 
-          <small>(click to change)</small>
-          <br/>The only credit card number that works is <strong>'4242424242424242'</strong>
+          <br/>Hence use the test credit card number <strong>'4242424242424242'</strong>
         </p>
+        <p style="font-size:80%;color:#ccc">but feel free to try submitting invalid fields to test for appropriate error messages</p>
       <% end %>
 
       <div class="alert-message error" style="display:none">
@@ -60,7 +63,7 @@
       <%= f.hidden_field :invoice_token, :value => params[:invoice_token] %>
       <%= f.hidden_field :stripe_card_token %>
       <%= f.hidden_field :description_for_stripe, :value => pay_invoice_by_token_url(params[:invoice_token]) %>
-      
+
       <div style="padding-left:90px" data-alert="alert">
         <%= submit_tag "Pay now", :class => "btn primary medium" %>
       </div>
