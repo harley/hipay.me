@@ -18,15 +18,21 @@ class Invoice < ActiveRecord::Base
   validates_numericality_of :amount, :greater_than => 0, :unless => :is_custom_mode
 
   def express?
-    id && items.size.zero? 
+    id && items.size.zero?
   end
 
   def custom?
-    id && items.size > 0 
+    id && items.size > 0
   end
-  
+
   def logo_url
-    logo.try :url  
+    if logo
+      if Rails.env.production?
+        logo.thumb("200x>").url(:host => "http://hipay.me")
+      else
+        logo.thumb("200x>").url
+      end
+    end
   end
 
   def amount_in_cents
@@ -38,7 +44,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def not_yet_used?
-    payments.size.zero?  
+    payments.size.zero?
   end
 
   def amount
@@ -46,7 +52,7 @@ class Invoice < ActiveRecord::Base
       items.sum(:amount)
     else
       read_attribute(:amount)
-    end  
+    end
   end
 
   def amount_paid
