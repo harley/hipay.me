@@ -79,8 +79,6 @@
         <div class="span-one-third invoice_logo right">
           <% if invoice.logo %>
             <%= image_tag invoice.logo_url, :class => "invoice_logo" %>
-          <% else %>
-            <%= image_tag "#{request.protocol}#{request.host_with_port}#{asset_path("hipaymelogotight.png")}" %>
           <% end %>
         </div>
       </div>

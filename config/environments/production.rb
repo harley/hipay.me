@@ -40,7 +40,7 @@ HipayMe::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = "http://hipay.me"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -64,7 +64,7 @@ HipayMe::Application.configure do
     sender_address: 'hmm@hipay.me',
     exception_recipients: 'exception@hipay.me',
     ignore_exceptions: [] # ExceptionNotifier.default_ignore_exceptions # + [RuntimeError]
-    #ignore_crawlers: %w{Googlebot bingbot} 
+    #ignore_crawlers: %w{Googlebot bingbot}
 
   config.action_mailer.default_url_options = { :host => 'http://hipay.me' }
 end
