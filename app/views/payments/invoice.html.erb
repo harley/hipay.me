@@ -78,7 +78,7 @@
         </div>
         <div class="span-one-third invoice_logo right">
           <% if invoice.logo %>
-            <%= image_tag invoice.logo_url(:host => "http://hipay.me"), :class => "invoice_logo" %>
+            <%= image_tag invoice.logo.url(:host => "http://hipay.me"), :class => "invoice_logo" %>
           <% end %>
         </div>
       </div>
