@@ -27,6 +27,7 @@ gem 'dragonfly'
 gem 'fog'
 gem 'exception_notification'
 gem 'doc_raptor'
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -54,6 +55,5 @@ group :development do
   gem 'letter_opener'
   gem 'hirb'
   gem 'heroku'
-  gem 'thin'
   #gem 'rails-dev-tweaks', '~> 0.5.1'
 end
