@@ -9,3 +9,4 @@ config/keys/*.yml
 !config/keys/*.sample.yml
 !config/keys/mailjet.yml
 public/system/
+.powrc
