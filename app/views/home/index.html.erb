@@ -1,13 +1,14 @@
 <%= content_for :header do %>
   <% unless user_signed_in? %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name) ) do |f| %>
       <%= devise_error_messages! %>
       <div class="home_sign_up row" style="width: 480px; margin:0 auto;margin-top:50px">
-        <%= f.email_field :email, :placeholder => "Email", :class => "span3", :style => "padding: 10px;margin: 5px" %>
-        <%= f.password_field :password, :placeholder => "Password", :class => "span3", :style => "padding: 10px;margin: 5px", :autocomplete => 'off' %>
-        <%= f.submit "Sign up", :class => "btn primary", :style => "padding: 10px;margin: 5px" %>
+        <%= f.email_field :email, placeholder: "Email", class: "span3", style: "padding: 10px;margin: 5px" %>
+        <%= f.password_field :password, placeholder: "Password", class: "span3", style: "padding: 10px;margin: 5px", autocomplete: 'off' %>
+        <%= f.submit "Sign up", class: "btn primary", style: "padding: 10px;margin: 5px", disabled: true %>
       </div>
     <% end %>
+    <%= render 'nolonger' %>
   <% end %>
 <% end %>
 
@@ -25,7 +26,7 @@
     </ul>
   </div>
   <div class="span-one-third">
-    <%= image_tag 'simplebilling.png', :class => "span4" %>
+    <%= image_tag 'simplebilling.png', class: "span4" %>
   </div>
 </div>
 </section>
@@ -33,7 +34,7 @@
 <section class="reason odd">
   <div class="row">
     <div class="span-one-third">
-      <%= image_tag "fastsecurepayment.png", :class => "span4" %>
+      <%= image_tag "fastsecurepayment.png", class: "span4" %>
     </div>
     <div class="span-two-thirds">
       <h1 class="page-header">Fast, Secure Payment for Freelancers</h1>
@@ -46,7 +47,7 @@
       </p>
     </div>
   </div>
-</section>  
+</section>
 
 <section class="reason">
   <div class="row">
@@ -61,7 +62,7 @@
       </p>
     </div>
     <div class="span-one-third">
-      <%= image_tag "pricing.png", :class => "span4" %>
+      <%= image_tag "pricing.png", class: "span4" %>
     </div>
   </div>
 </section>

@@ -1,3 +1,4 @@
+<%= render 'home/nolonger' %>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-stacked"}) do |f| %>
   <h2 class="page-header">Sign in</h2>
   <div class="clearfix">
@@ -17,7 +18,7 @@
   <% if devise_mapping.rememberable? -%>
   <div class="clearfix">
     <div class="inline-inputs">
-      <%= f.check_box :remember_me %> 
+      <%= f.check_box :remember_me %>
       <span><%= f.label :remember_me %></span>
     </div>
   </div>
