@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20111030001846) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "namespace"
   end
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20111030001846) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(:version => 20111030001846) do
   create_table "invoices", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.decimal  "amount",      :default => 0.0
+    t.decimal  "amount"
     t.text     "description"
     t.text     "token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "logo_uid"
   end
 
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(:version => 20111030001846) do
     t.integer  "invoice_id"
     t.decimal  "amount",     :precision => 8, :scale => 2
     t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   create_table "payments", :force => true do |t|
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(:version => 20111030001846) do
     t.string   "last4"
     t.boolean  "live_mode",                                     :default => false
     t.text     "stripe_response"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.decimal  "amount",          :precision => 8, :scale => 2
     t.string   "access_token"
     t.string   "payer_name"
@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20111030001846) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
     t.boolean  "live_mode",                              :default => false
     t.string   "test_stripe_public_key"
     t.string   "test_stripe_private_key"

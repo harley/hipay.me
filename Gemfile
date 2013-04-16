@@ -48,12 +48,10 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.7'
 end
 
 group :development do
   gem 'letter_opener'
   gem 'hirb'
-  gem 'heroku'
-  #gem 'rails-dev-tweaks', '~> 0.5.1'
 end

@@ -86,11 +86,6 @@ GEM
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
     has_scope (0.5.1)
-    heroku (2.11.0)
-      launchy (>= 0.3.2)
-      rest-client (~> 1.6.1)
-      rubyzip
-      term-ansicolor (~> 1.0.5)
     hike (1.2.1)
     hirb (0.5.0)
     httparty (0.8.1)
@@ -174,7 +169,6 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.7.0)
     ruby-hmac (0.4.0)
-    rubyzip (0.9.4)
     sass (3.2.5)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -185,10 +179,9 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.4)
+    sqlite3 (1.3.7)
     stripe (1.5.21)
       rest-client
-    term-ansicolor (1.0.7)
     thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -219,7 +212,6 @@ DEPENDENCIES
   dragonfly
   exception_notification
   fog
-  heroku
   hirb
   jquery-rails
   letter_opener
@@ -228,7 +220,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   rspec-rails
   sass-rails
-  sqlite3
+  sqlite3 (= 1.3.7)
   stripe
   thin
   turn
